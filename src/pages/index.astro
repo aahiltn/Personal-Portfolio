@@ -1,0 +1,31 @@
+---
+// Component Imports
+import Instax from '../components/instax.astro';
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/basics/astro-components/
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Aahil Nishad</title>
+	</head>
+
+	<body>
+		<div class="grid grid-cols-3 place-items-center h-screen">
+			<div> Bio </div>
+			<Instax direction="home"></Instax>
+			<div>Contact</div>
+		</div>
+
+		<div class="flex flex-col w-full place-items-center">
+			<div> Experiences </div>
+			<div> Projects </div>
+		</div>
+	
+	</body>
+</html>

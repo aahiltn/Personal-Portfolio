@@ -1,9 +1,12 @@
 ---
 // Component Imports
-import Instax from '../components/instax.astro';
-
+import Instax from '../components/instax.jsx';
+import Navbar from '../components/navbar.tsx';
 // Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+// https://docs.astro.build/basics/astro-components/'
+
+//const [direction, setDirection] = useState("home");
+
 ---
 
 <html lang="en">
@@ -15,16 +18,26 @@ import Instax from '../components/instax.astro';
 		<title>Aahil Nishad</title>
 	</head>
 
-	<body>
-		<div class="grid grid-cols-3 place-items-center h-screen">
-			<div> Bio </div>
-			<Instax direction="home"></Instax>
-			<div>Contact</div>
+	<body class="space-y-28">
+		<Navbar client:load/>
+
+		<div class="flex w-auto h-auto justify-center">
+			<Instax client:load/>
 		</div>
 
-		<div class="flex flex-col w-full place-items-center">
-			<div> Experiences </div>
-			<div> Projects </div>
+		<div class="flex flex-col w-full place-items-center space-y-24">
+			<div class="flex flex-row" id="bio">
+				<div class="text-4xl">Bio </div>
+			</div>
+			<div class="flex flex-row" id="experience">
+				<div class="text-4xl">Experiences</div>
+			</div>
+			<div class="flex flex-row" id="projects">
+				<div class="text-4xl">Projects</div>
+			</div>
+			<div class="flex flex-row" id="contact">
+				<div class="text-4xl">Contact</div>
+			</div>
 		</div>
 	
 	</body>

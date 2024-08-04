@@ -2,33 +2,28 @@
 // Component Imports
 import Instax from '../components/instax.jsx';
 import Navbar from '../components/navbar.tsx';
+import Bio from '../components/bio.astro';
 // Full Astro Component Syntax:
 // https://docs.astro.build/basics/astro-components/'
-
-//const [direction, setDirection] = useState("home");
-
 ---
 
-<html lang="en">
+<html class="scroll-smooth" lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
 		<title>Aahil Nishad</title>
 	</head>
 
-	<body class="space-y-28">
+	<body class="space-y-16 scroll-smooth">
 		<Navbar client:load/>
 
 		<div class="flex w-auto h-auto justify-center">
 			<Instax client:load/>
 		</div>
 
-		<div class="flex flex-col w-full place-items-center space-y-24">
-			<div class="flex flex-row" id="bio">
-				<div class="text-4xl">Bio </div>
-			</div>
+		<div class="flex flex-col w-full place-items-center space-y-10">
+			<Bio ref="bio" client:load />
 			<div class="flex flex-row" id="experience">
 				<div class="text-4xl">Experiences</div>
 			</div>

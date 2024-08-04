@@ -3,6 +3,7 @@ import preact from "@astrojs/preact";
 import react from "@astrojs/react";
 import solid from "@astrojs/solid-js";
 import tailwind from "@astrojs/tailwind";
+import vercel from "@astrojs/vercel";
 
 export default defineConfig({
   // Enable many frameworks to support all different kinds of components.
@@ -19,4 +20,6 @@ export default defineConfig({
       include: ["**/solid/*"],
     }),
   ],
+  output: "server",
+  adapter: vercel(),
 });

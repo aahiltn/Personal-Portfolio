@@ -27,7 +27,7 @@ import Bio from '../components/bio.astro';
 		</div>
 
 		<div class="flex flex-col w-full place-items-center space-y-10">
-			<Bio/>
+			<Bio ref="bio" client:load />
 			<div class="flex flex-row" id="experience">
 				<div class="text-4xl">Experiences</div>
 			</div>

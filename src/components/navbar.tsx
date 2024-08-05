@@ -5,7 +5,6 @@ import { direction } from "../store.js";
 const Navbar: React.FC = () => {
   function setDirection(dir: string) {
     direction.set(dir);
-    console.log(direction.get());
   }
 
   const dir = useStore(direction);
@@ -15,7 +14,7 @@ const Navbar: React.FC = () => {
       <a
         className="mt-8 gap-2 text-2xl font-semibold group transition duration-400"
         onMouseEnter={() => setDirection("bio")}
-        onMouseLeave={() => setDirection("home")}
+        //onMouseLeave={() => setDirection("home")}
         href={`#${dir}`}
       >
         Bio
@@ -24,7 +23,7 @@ const Navbar: React.FC = () => {
       <a
         className="mt-8 gap-3 text-2xl font-semibold group transition duration-400"
         onMouseEnter={() => setDirection("experience")}
-        onMouseLeave={() => setDirection("home")}
+        // onMouseLeave={() => setDirection("home")}
         href={`#${direction.get()}`}
       >
         Experiences
@@ -33,7 +32,7 @@ const Navbar: React.FC = () => {
       <a
         className="mt-8 gap-3 text-2xl font-semibold group transition duration-400"
         onMouseEnter={() => setDirection("projects")}
-        onMouseLeave={() => setDirection("home")}
+        // onMouseLeave={() => setDirection("home")}
         href={`#${direction.get()}`}
       >
         Projects
@@ -42,7 +41,7 @@ const Navbar: React.FC = () => {
       <a
         className="mt-8 gap-3 text-2xl font-semibold group transition duration-400"
         onMouseEnter={() => setDirection("contact")}
-        onMouseLeave={() => setDirection("home")}
+        //onMouseLeave={() => setDirection("home")}
         href={`#${direction.get()}`}
       >
         Contact

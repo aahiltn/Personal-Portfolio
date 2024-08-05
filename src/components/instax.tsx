@@ -2,8 +2,11 @@ import React from "react";
 import { useStore } from "@nanostores/react";
 import { direction } from "../store";
 import pfp from "../images/pfp.jpg";
-import left from "../images/left.png";
-import right from "../images/right.jpg";
+import bio from "../images/bio.jpeg";
+import contact from "../images/contact.jpeg";
+import experiences from "../images/experiences.jpeg";
+import projects from "../images/projects.jpg";
+
 import "@fontsource/schoolbell";
 
 interface InstaxImage {
@@ -12,10 +15,10 @@ interface InstaxImage {
 
 const images: InstaxImage = {
   home: pfp,
-  bio: pfp,
-  experience: left,
-  projects: right,
-  contact: pfp,
+  bio: bio,
+  experience: experiences,
+  projects: projects,
+  contact: contact,
 };
 
 const Instax: React.FC = () => {
@@ -23,7 +26,10 @@ const Instax: React.FC = () => {
   const pic = images[dir] || images.home;
 
   return (
-    <div className="bg-white flex-none flex-col w-[19.5rem] h-auto py-3 px-5 text-black rounded-lg shadow-md hover:outline-md ">
+    <div
+      className="bg-white flex-none flex-col w-[19.5rem] h-auto py-3 px-5 text-black rounded-lg shadow-md hover:outline-md "
+      onMouseEnter={() => direction.set("home")}
+    >
       <img src={pic.src} alt="aahil" className="py-4" />
       <div className="sticky top-0 bg-white my-4 font-['Schoolbell'] flex flex-col justify-center text-center">
         <span className="text-4xl font-extrabold">Aahil Nishad</span>

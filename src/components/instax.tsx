@@ -23,9 +23,9 @@ const Instax: React.FC = () => {
   const pic = images[dir] || images.home;
 
   return (
-    <div className="flex-none flex-col min-w-64 w-96 h-auto py-3 px-5 bg-white-500 text-black rounded-lg shadow-md hover:focus:outline-md focus:ring-2 focus:ring-purple-400 focus:ring-opacity-75">
+    <div className="bg-white flex-none flex-col min-w-64 w-80 mt-2 h-auto py-3 px-5 bg-white-500 text-black rounded-lg shadow-md hover:outline-md ">
       <img src={pic.src} alt="aahil" className="py-4" />
-      <div className="my-4 font-['Schoolbell'] flex flex-col justify-center text-center">
+      <div className="bg-white my-4 font-['Schoolbell'] flex flex-col justify-center text-center">
         <span className="text-4xl font-extrabold">Aahil Nishad</span>
         <span className="text-lg font-semibold">
           Northeastern '27, BSCS, Software Engineer

@@ -1,8 +1,17 @@
+const {
+  addIconSelectors,
+  addDynamicIconSelectors,
+} = require("@iconify/tailwind");
+
 module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require("taos/plugin")],
+  plugins: [
+    // Iconify plugin, requires writing list of icon sets to load
+    addDynamicIconSelectors(),
+    require("taos/plugin"),
+  ],
   safelist: [
     "!duration-[0ms]",
     "!delay-[0ms]",

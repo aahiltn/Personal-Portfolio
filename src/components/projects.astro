@@ -1,0 +1,17 @@
+---
+import Card from '../components/card.astro';
+import LetsLink from '../images/projects/LetsLink_logo.svg'
+import CarbonConnect from '../images/projects/CarbonConnect.svg'
+import aahil from "../images/projects/pfp.png"
+import tunul from "../images/projects/tunulLogo.png"
+---   
+<div class=`grid w-3/4 justify-center bg-yellow-950 rounded-md shadow-lg p-4
+    delay-[0ms] duration-[600ms] taos:[transform:translate3d(0,200px,0)_scale(0.6)] taos:opacity-0` data-taos-offset="100" id="projects">
+    <div class="font-[Schoolbell] font-extrabold p-4 text-4xl text-zinc-200 text-center">Projects</div>
+    <div class="flex flex-wrap justify-center gap-2">
+        <Card title="Portfolio Website" description="Built with love, an insight into my life. You're already here. Welcome aboard!" location="Danbury, CT" dates="Aug. 2024" image={aahil.src} stack={["Astro", "React", "Styled Components", "TypeScript", "JavaScript", "Tailwind"]}/>
+        <Card title="Carbon Connect" description="A carbon-emissions calculator and tracker for EU-based residents, companies, and organizations." location="Leuven, Belgium" dates="June 2024" image={CarbonConnect.src} stack={["Python", "SQL", "Docker", "Streamlit", "Flask"]}/>
+        <Card title="Let's Link" description="An easy, informal way to meet up with friends. Awarded Best Use of MongoDB Atlas by Major League Hacking." dates="Feb. 2024" location="Boston, MA" image={LetsLink.src} stack={["Next.js", "React", "MongoDB", "Google OAuth"]}/>
+        <Card title="tunul" description="A step-by-step tunnel navigation of the Northeastern University Boston Campus. Made simple." dates="Apr. 2024" location="Boston, MA" image={tunul.src} stack={["Next.js", "React", "Typescript", "Javascript", "JSON"]}></Card> 
+    </div>
+</div>

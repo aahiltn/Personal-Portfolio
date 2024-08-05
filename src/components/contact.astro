@@ -1,0 +1,57 @@
+<form class="flex flex-wrap space-2 p-2 delay-[300ms] duration-[600ms] taos:scale-[0.6] taos:opacity-0" data-taos-offset="400" id="form" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="e2c82ab0-f06a-4ad2-9dc7-c5dc439c10a8" />
+    <div class="text-xl w-1/2 w-min-24 gap-y-2 p-2 flex-col flex">
+        <label class="text-zinc-200" >First Name <span class="text-rose-400">*</span> </label>
+        <input class="text-zinc-800 bg-zinc-200 p-3 rounded-lg"  type="text" name="first" placeholder="First Name" required />
+    </div>
+    <div class="text-xl w-1/2 w-min-24 gap-y-2 p-2 flex-col flex">
+        <label class="text-zinc-200">Last Name <span class="text-rose-400">*</span> </label>
+        <input class="text-zinc-800 bg-zinc-200 p-3 rounded-lg"  type="text" name="last" placeholder="Last Name" />
+    </div>
+    <div class="text-xl p-2 gap-y-2 flex-col flex w-min-30 w-3/5">
+        <label class="text-zinc-200">Email Address <span class="text-rose-400">*</span> </label>
+        <input class="text-zinc-800 bg-zinc-200 p-3 rounded-lg" type="email" name="email" inputmode="email" placeholder="example@example.com" required />
+    </div>
+    <div class="text-xl p-2 gap-y-2 flex-col flex w-min-24 w-2/5">
+        <label class="text-zinc-200">Organization</label>
+        <input class="text-zinc-800 bg-zinc-200 p-3 rounded-lg" type="text" name="organization" placeholder="Org Name" />
+    </div>
+    
+    <div class="text-xl p-2 gap-y-2 flex-col flex w-full">
+        <label class="text-zinc-200">Message <span class="text-rose-400">*</span> </label>
+        <textarea class="text-zinc-800 bg-zinc-200 w-full p-3 rounded-lg" name="message" rows="4" placeholder="Message" required></textarea>
+    </div>
+
+    <div class="w-full flex mt-2 justify-center items-center">
+        <button class="w-auto rounded-lg text-yellow-950 font-bold hover:shadow-xl hover:outline-1 hover:bg-yellow-600 bg-yellow-700 justify-center py-2 align-middle px-4" type="submit">
+            Send Message
+        </button>
+    </div>
+    
+  </form>
+
+  <script>
+    const form = document.getElementById('form');
+    const url = 'https://api.web3forms.com/submit';
+    
+    form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(form as HTMLFormElement);
+    fetch(url, {
+        method: 'POST',
+        body: formData,
+    })
+    .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+            alert('Form submitted successfully!');
+        } else {
+        alert('Error submitting form!');
+        console.log(response);
+        }
+        })
+        .catch((error) => {
+        console.error('Error submitting form:', error);
+        });
+    });
+  </script>

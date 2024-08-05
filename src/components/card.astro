@@ -1,0 +1,41 @@
+---
+import Bubble from './bubble.astro';
+
+const title = Astro.props.title;
+const description = Astro.props.description;
+const dates = Astro.props.dates;
+const location = Astro.props.location;
+const image = Astro.props.image;
+const stack = Astro.props.stack;
+---
+
+<div class="w-auto max-w-md shadow-md bg-zinc-300 m-5 hover:shadow-lg rounded-md p-6 grid gap-6
+delay-[300ms] duration-[600ms] taos:scale-[0.6] taos:opacity-0" data-taos-offset="400">
+  <div class="flex items-center gap-4">
+    <div class="bg-muted rounded-md flex items-center justify-center aspect-square w-14">
+      <img
+        src={image}
+        width="50"
+        height="50"
+        alt="Project Logo"
+        class="object-contain"
+      />
+    </div>
+    <div class="grid gap-1">
+      <h3 class="text-xl font-semibold">{title}</h3>
+      <div class="flex items-center gap-1 text-sm text-muted-foreground">
+        <span>{location}</span>
+        <span>·</span>
+        <span>{dates}</span>
+      </div>
+    </div>
+  </div>
+  <p class="text-muted-foreground">
+    {description}
+  </p>
+  <div class="flex flex-wrap gap-2">
+    {stack.map((item : string, index : number) => (
+      <Bubble key={index} item={item} />
+    ))}
+  </div>
+</div>

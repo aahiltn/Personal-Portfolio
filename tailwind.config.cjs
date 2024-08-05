@@ -4,6 +4,7 @@ const {
 } = require("@iconify/tailwind");
 
 module.exports = {
+  darkMode: "selector",
   theme: {
     extend: {},
   },

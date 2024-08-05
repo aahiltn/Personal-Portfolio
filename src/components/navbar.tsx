@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
   const dir = useStore(direction);
 
   return (
-    <nav className="text-amber-950 flex flex-row w-full justify-around place-items-center">
+    <nav className="text-[#412819] dark:text-gray-200 flex flex-wrap w-full justify-around place-items-center">
       <a
         className="mt-8 gap-2 text-2xl font-semibold group transition duration-400"
         onMouseEnter={() => setDirection("bio")}
@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
         href={`#${dir}`}
       >
         Bio
-        <div className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-amber-900"></div>
+        <div className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 dark:bg-yellow-500 bg-amber-900"></div>
       </a>
       <a
         className="mt-8 gap-3 text-2xl font-semibold group transition duration-400"
@@ -28,7 +28,7 @@ const Navbar: React.FC = () => {
         href={`#${direction.get()}`}
       >
         Experiences
-        <div className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-amber-900"></div>
+        <div className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 dark:bg-yellow-500 bg-amber-900"></div>
       </a>
       <a
         className="mt-8 gap-3 text-2xl font-semibold group transition duration-400"
@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
         href={`#${direction.get()}`}
       >
         Projects
-        <div className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-amber-900"></div>
+        <div className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 dark:bg-yellow-500 bg-amber-900"></div>
       </a>
       <a
         className="mt-8 gap-3 text-2xl font-semibold group transition duration-400"
@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
         href={`#${direction.get()}`}
       >
         Contact
-        <div className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 bg-amber-900"></div>
+        <div className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 dark:bg-yellow-500 bg-amber-900"></div>
       </a>
     </nav>
   );

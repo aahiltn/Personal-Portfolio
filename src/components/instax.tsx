@@ -27,7 +27,7 @@ const Instax: React.FC = () => {
 
   return (
     <div
-      className="bg-white flex-none flex-col w-[19.5rem] h-auto py-3 px-5 text-black rounded-lg shadow-md hover:outline-md "
+      className="bg-white flex-none flex-col w-[19.5rem] h-auto py-3 px-5 text-black rounded-md shadow-xs border-r-4 dark:border-gray-600 border-[#98701f] hover:outline-md "
       onMouseEnter={() => direction.set("home")}
     >
       <img src={pic.src} alt="aahil" className="py-4" />

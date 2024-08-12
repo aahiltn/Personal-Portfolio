@@ -11,31 +11,39 @@ import havoc from '../images/projects/havoc.png';
 
 <html class="scroll-smooth" lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-QHB0PLT6J6"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+  
+      gtag('config', 'G-QHB0PLT6J6');
+    </script>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Aahil Nishad</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <title>Portfolio: Aahil Nishad</title>
+
+    <meta property="og:title" content="Aahil Nishad" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.aahilnishad.me/" />
+    <meta property="og:description" content="Explore my projects, experiences, and contact me!" />
+    <meta property="og:site_name" content="Aahil Nishad's Portfolio" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Portfolio: Aahil Nishad" />
+    <meta name="twitter:description" content="Welcome to Aahil Nishad's portfolio. Explore my projects, experiences, and contact me for collaboration." />
   </head>
 
   <body class="bg-[#D4A13D] dark:bg-gray-900 space-y-14 scroll-smooth pb-24 w-full">
 	<div class="relative w-full">
 		<ThemeToggle/>
 	</div>
-
 	<Navbar client:load />
-    <!-- <div class="flex w-auto h-auto sticky top-0 justify-center">
-      <div class="rounded-lg p-4 shadow-md hover:outline-md w-[22rem] bg-white dark:bg-gray-800 my-4 font-['Schoolbell'] flex flex-col justify-center text-center">
-        <span class="text-4xl font-extrabold">Aahil Nishad</span>
-        <span class="text-lg font-semibold dark:text-gray-200">
-          Northeastern '27, BSCS, Software Engineer
-        </span>
-      </div>
-    </div> -->
-
     <div class="flex w-auto justify-center parent-container h-auto overflow-auto">
       <Instax client:load />
     </div>
-
     <div class="flex flex-col w-full place-items-center" id="bio">
       <Bio />
     </div>

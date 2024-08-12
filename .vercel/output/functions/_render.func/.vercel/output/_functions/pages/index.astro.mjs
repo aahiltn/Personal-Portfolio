@@ -1,5 +1,5 @@
 /* empty css                                 */
-import { c as createComponent, r as renderTemplate, m as maybeRenderHead, a as addAttribute, b as createAstro, d as renderComponent, e as renderHead } from '../chunks/astro/server_DC5h8_Cx.mjs';
+import { c as createComponent, r as renderTemplate, m as maybeRenderHead, a as addAttribute, b as createAstro, d as renderComponent, e as renderHead } from '../chunks/astro/server_CYCWX_Ry.mjs';
 import 'kleur/colors';
 import { jsxs, jsx } from 'react/jsx-runtime';
 import 'react';
@@ -23,26 +23,52 @@ const pfp = new Proxy({"src":"/_astro/pfp.35OGZ8qZ.jpg","width":2018,"height":26
 						}
 					});
 
-const left = new Proxy({"src":"/_astro/left.CP7RbODA.png","width":1600,"height":1600,"format":"png"}, {
+const bio = new Proxy({"src":"/_astro/bio.C4DAuS_J.jpeg","width":1200,"height":1600,"format":"jpg"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
 							}
 							if (name === 'fsPath') {
-								return "C:/Users/aahil/Documents/Projects/portfolio/src/images/left.png";
+								return "C:/Users/aahil/Documents/Projects/portfolio/src/images/bio.jpeg";
 							}
 							
 							return target[name];
 						}
 					});
 
-const right = new Proxy({"src":"/_astro/right.Br3tr3cd.jpg","width":474,"height":474,"format":"jpg"}, {
+const contact = new Proxy({"src":"/_astro/contact.pf3mTOGD.jpeg","width":1200,"height":1600,"format":"jpg"}, {
 						get(target, name, receiver) {
 							if (name === 'clone') {
 								return structuredClone(target);
 							}
 							if (name === 'fsPath') {
-								return "C:/Users/aahil/Documents/Projects/portfolio/src/images/right.jpg";
+								return "C:/Users/aahil/Documents/Projects/portfolio/src/images/contact.jpeg";
+							}
+							
+							return target[name];
+						}
+					});
+
+const experiences = new Proxy({"src":"/_astro/experiences.BB2U9Siq.jpeg","width":1200,"height":1600,"format":"jpg"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "C:/Users/aahil/Documents/Projects/portfolio/src/images/experiences.jpeg";
+							}
+							
+							return target[name];
+						}
+					});
+
+const projects = new Proxy({"src":"/_astro/projects.DH55hxCt.jpg","width":1199,"height":1600,"format":"jpg"}, {
+						get(target, name, receiver) {
+							if (name === 'clone') {
+								return structuredClone(target);
+							}
+							if (name === 'fsPath') {
+								return "C:/Users/aahil/Documents/Projects/portfolio/src/images/projects.jpg";
 							}
 							
 							return target[name];
@@ -51,27 +77,33 @@ const right = new Proxy({"src":"/_astro/right.Br3tr3cd.jpg","width":474,"height"
 
 const images = {
   home: pfp,
-  bio: pfp,
-  experience: left,
-  projects: right,
-  contact: pfp
+  bio,
+  experience: experiences,
+  projects,
+  contact
 };
 const Instax = () => {
   const dir = useStore(direction);
   const pic = images[dir] || images.home;
-  return /* @__PURE__ */ jsxs("div", { className: "bg-white flex-none flex-col w-[19.5rem] h-auto py-3 px-5 text-black rounded-lg shadow-md hover:outline-md ", children: [
-    /* @__PURE__ */ jsx("img", { src: pic.src, alt: "aahil", className: "py-4" }),
-    /* @__PURE__ */ jsxs("div", { className: "sticky top-0 bg-white my-4 font-['Schoolbell'] flex flex-col justify-center text-center", children: [
-      /* @__PURE__ */ jsx("span", { className: "text-4xl font-extrabold", children: "Aahil Nishad" }),
-      /* @__PURE__ */ jsx("span", { className: "text-lg font-semibold", children: "Northeastern '27, BSCS, Software Dev" })
-    ] })
-  ] });
+  return /* @__PURE__ */ jsxs(
+    "div",
+    {
+      className: "bg-white flex-none flex-col w-[19.5rem] h-auto py-3 px-5 text-black rounded-md shadow-xs border-r-4 dark:border-gray-600 border-[#98701f] hover:outline-md ",
+      onMouseEnter: () => direction.set("home"),
+      children: [
+        /* @__PURE__ */ jsx("img", { src: pic.src, alt: "aahil", className: "py-4" }),
+        /* @__PURE__ */ jsxs("div", { className: "sticky top-0 bg-white my-4 font-['Schoolbell'] flex flex-col justify-center text-center", children: [
+          /* @__PURE__ */ jsx("span", { className: "text-4xl font-extrabold", children: "Aahil Nishad" }),
+          /* @__PURE__ */ jsx("span", { className: "text-lg font-semibold", children: "Northeastern '27, BSCS, Software Dev" })
+        ] })
+      ]
+    }
+  );
 };
 
 const Navbar = () => {
   function setDirection(dir2) {
     direction.set(dir2);
-    console.log(direction.get());
   }
   const dir = useStore(direction);
   return /* @__PURE__ */ jsxs("nav", { className: "text-[#412819] dark:text-gray-200 flex flex-wrap w-full justify-around place-items-center", children: [
@@ -80,7 +112,6 @@ const Navbar = () => {
       {
         className: "mt-8 gap-2 text-2xl font-semibold group transition duration-400",
         onMouseEnter: () => setDirection("bio"),
-        onMouseLeave: () => setDirection("home"),
         href: `#${dir}`,
         children: [
           "Bio",
@@ -93,7 +124,6 @@ const Navbar = () => {
       {
         className: "mt-8 gap-3 text-2xl font-semibold group transition duration-400",
         onMouseEnter: () => setDirection("experience"),
-        onMouseLeave: () => setDirection("home"),
         href: `#${direction.get()}`,
         children: [
           "Experiences",
@@ -106,7 +136,6 @@ const Navbar = () => {
       {
         className: "mt-8 gap-3 text-2xl font-semibold group transition duration-400",
         onMouseEnter: () => setDirection("projects"),
-        onMouseLeave: () => setDirection("home"),
         href: `#${direction.get()}`,
         children: [
           "Projects",
@@ -119,7 +148,6 @@ const Navbar = () => {
       {
         className: "mt-8 gap-3 text-2xl font-semibold group transition duration-400",
         onMouseEnter: () => setDirection("contact"),
-        onMouseLeave: () => setDirection("home"),
         href: `#${direction.get()}`,
         children: [
           "Contact",
@@ -231,12 +259,12 @@ Send Message
 </button> </div> </form> `;
 }, "C:/Users/aahil/Documents/Projects/portfolio/src/components/contact.astro", void 0);
 
-var __freeze = Object.freeze;
-var __defProp = Object.defineProperty;
-var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
-var _a;
+var __freeze$1 = Object.freeze;
+var __defProp$1 = Object.defineProperty;
+var __template$1 = (cooked, raw) => __freeze$1(__defProp$1(cooked, "raw", { value: __freeze$1(cooked.slice()) }));
+var _a$1;
 const $$ThemeToggle = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate(_a || (_a = __template(["", `<button id="themeToggle" class="fixed bottom-3 right-3 border-0 p-4 h-10 dark:bg-[#D4A13D] bg-gray-900 rounded-full flex items-center justify-center shadow-lg transition-all delay-[300ms] duration-[600ms] taos:translate-x-[200px] taos:opacity-0" data-taos-offset="0"> <svg width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <!-- Light mode icon (moon) visible in light mode --> <path class="moon fill-[#D4A13D] dark:fill-transparent transition-all duration-600" fill-rule="evenodd" d="M16.5 6A10.5 10.5 0 0 1 4.7 16.4 8.5 8.5 0 1 0 16.4 4.7l.1 1.3zm-1.7-2a9 9 0 0 1 .2 2 9 9 0 0 1-11 8.8 9.4 9.4 0 0 1-.8-.3c-.4 0-.8.3-.7.7a10 10 0 0 0 .3.8 10 10 0 0 0 9.2 6 10 10 0 0 0 4-19.2 9.7 9.7 0 0 0-.9-.3c-.3-.1-.7.3-.6.7a9 9 0 0 1 .3.8z"></path> <!-- Dark mode icon (sun) visible in dark mode --> <path class="sun fill-transparent dark:fill-gray-800 transition-all duration-600" fill-rule="evenodd" d="M12 17.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zm0 1.5a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm12-7a.8.8 0 0 1-.8.8h-2.4a.8.8 0 0 1 0-1.6h2.4a.8.8 0 0 1 .8.8zM4 12a.8.8 0 0 1-.8.8H.8a.8.8 0 0 1 0-1.6h2.5a.8.8 0 0 1 .8.8zm16.5-8.5a.8.8 0 0 1 0 1l-1.8 1.8a.8.8 0 0 1-1-1l1.7-1.8a.8.8 0 0 1 1 0zM6.3 17.7a.8.8 0 0 1 0 1l-1.7 1.8a.8.8 0 1 1-1-1l1.7-1.8a.8.8 0 0 1 1 0zM12 0a.8.8 0 0 1 .8.8v2.5a.8.8 0 0 1-1.6 0V.8A.8.8 0 0 1 12 0zm0 20a.8.8 0 0 1 .8.8v2.4a.8.8 0 0 1-1.6 0v-2.4a.8.8 0 0 1 .8-.8zM3.5 3.5a.8.8 0 0 1 1 0l1.8 1.8a.8.8 0 1 1-1 1L3.5 4.6a.8.8 0 0 1 0-1zm14.2 14.2a.8.8 0 0 1 1 0l1.8 1.7a.8.8 0 0 1-1 1l-1.8-1.7a.8.8 0 0 1 0-1z"></path> </svg> </button> <script>
+  return renderTemplate(_a$1 || (_a$1 = __template$1(["", `<button id="themeToggle" class="fixed bottom-3 right-3 border-0 p-4 h-10 dark:bg-[#D4A13D] bg-gray-900 rounded-full flex items-center justify-center shadow-lg transition-all delay-[300ms] duration-[600ms] taos:translate-x-[200px] taos:opacity-0" data-taos-offset="0"> <svg width="24px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <!-- Light mode icon (moon) visible in light mode --> <path class="moon fill-[#D4A13D] dark:fill-transparent transition-all duration-600" fill-rule="evenodd" d="M16.5 6A10.5 10.5 0 0 1 4.7 16.4 8.5 8.5 0 1 0 16.4 4.7l.1 1.3zm-1.7-2a9 9 0 0 1 .2 2 9 9 0 0 1-11 8.8 9.4 9.4 0 0 1-.8-.3c-.4 0-.8.3-.7.7a10 10 0 0 0 .3.8 10 10 0 0 0 9.2 6 10 10 0 0 0 4-19.2 9.7 9.7 0 0 0-.9-.3c-.3-.1-.7.3-.6.7a9 9 0 0 1 .3.8z"></path> <!-- Dark mode icon (sun) visible in dark mode --> <path class="sun fill-transparent dark:fill-gray-800 transition-all duration-600" fill-rule="evenodd" d="M12 17.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zm0 1.5a7 7 0 1 0 0-14 7 7 0 0 0 0 14zm12-7a.8.8 0 0 1-.8.8h-2.4a.8.8 0 0 1 0-1.6h2.4a.8.8 0 0 1 .8.8zM4 12a.8.8 0 0 1-.8.8H.8a.8.8 0 0 1 0-1.6h2.5a.8.8 0 0 1 .8.8zm16.5-8.5a.8.8 0 0 1 0 1l-1.8 1.8a.8.8 0 0 1-1-1l1.7-1.8a.8.8 0 0 1 1 0zM6.3 17.7a.8.8 0 0 1 0 1l-1.7 1.8a.8.8 0 1 1-1-1l1.7-1.8a.8.8 0 0 1 1 0zM12 0a.8.8 0 0 1 .8.8v2.5a.8.8 0 0 1-1.6 0V.8A.8.8 0 0 1 12 0zm0 20a.8.8 0 0 1 .8.8v2.4a.8.8 0 0 1-1.6 0v-2.4a.8.8 0 0 1 .8-.8zM3.5 3.5a.8.8 0 0 1 1 0l1.8 1.8a.8.8 0 1 1-1 1L3.5 4.6a.8.8 0 0 1 0-1zm14.2 14.2a.8.8 0 0 1 1 0l1.8 1.7a.8.8 0 0 1-1 1l-1.8-1.7a.8.8 0 0 1 0-1z"></path> </svg> </button> <script>
     const theme = (() => {
       if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
         return localStorage.getItem('theme');
@@ -280,17 +308,18 @@ const havoc = new Proxy({"src":"/_astro/havoc.cp873X4W.png","width":464,"height"
 						}
 					});
 
+var __freeze = Object.freeze;
+var __defProp = Object.defineProperty;
+var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
+var _a;
 const $$Index = createComponent(($$result, $$props, $$slots) => {
-  return renderTemplate`<html class="scroll-smooth" lang="en"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><title>Aahil Nishad</title>${renderHead()}</head> <body class="bg-[#D4A13D] dark:bg-gray-900 space-y-14 scroll-smooth pb-24 w-full"> <div class="relative w-full"> ${renderComponent($$result, "ThemeToggle", $$ThemeToggle, {})} </div> ${renderComponent($$result, "Navbar", Navbar, { "client:load": true, "client:component-hydration": "load", "client:component-path": "C:/Users/aahil/Documents/Projects/portfolio/src/components/navbar.tsx", "client:component-export": "default" })} <!-- <div class="flex w-auto h-auto sticky top-0 justify-center">
-      <div class="rounded-lg p-4 shadow-md hover:outline-md w-[22rem] bg-white dark:bg-gray-800 my-4 font-['Schoolbell'] flex flex-col justify-center text-center">
-        <span class="text-4xl font-extrabold">Aahil Nishad</span>
-        <span class="text-lg font-semibold dark:text-gray-200">
-          Northeastern '27, BSCS, Software Engineer
-        </span>
-      </div>
-    </div> --> <div class="flex w-auto justify-center parent-container h-auto overflow-auto"> ${renderComponent($$result, "Instax", Instax, { "client:load": true, "client:component-hydration": "load", "client:component-path": "C:/Users/aahil/Documents/Projects/portfolio/src/components/instax.tsx", "client:component-export": "default" })} </div> <div class="flex flex-col w-full place-items-center" id="bio"> ${renderComponent($$result, "Bio", $$Bio, {})} </div> <div id="experience" class="flex flex-col w-full place-items-center space-y-20"> <div class="grid w-3/4 justify-center bg-[#e6be70] text-[#47342c] dark:text-gray-200 dark:bg-gray-800 rounded-md shadow-lg p-3 delay-[100ms] duration-[600ms] taos:[transform:translate3d(0,200px,0)_scale(0.6)] taos:opacity-0" data-taos-offset="0"> <div class="font-[Schoolbell] font-extrabold p-4 text-4xl dark:text-gray-200 text-center">
-Experiences
-</div> <div class="flex flex-wrap justify-center gap-2"> ${renderComponent($$result, "Card", $$Card, { "title": "Software Developer", "description": "Contributor to FinishLine, a project management dashboard used by by 100+ engineers for the construction of a competitive Formula SAE and FH+E racing car.", "location": "Northeastern Electric Racing", "dates": "Jan. 2024 - Present", "image": "https://electricracing.northeastern.edu/wp-content/uploads/2021/02/cropped-Logo-Transparent-180x180.png", "stack": ["React", "Typescript", "Git", "CSS"], "link": "https://finishlinebyner.com/" })} ${renderComponent($$result, "Card", $$Card, { "title": "Software Developer", "description": "Implemented control systems in C++ and developed autonomous routing in cooperation with other members for team 5150H in use for 20+ competitions and 18+ awards.", "location": "Vex Team: 5150H", "dates": "Sep. 2021 - June 2023", "image": havoc.src, "stack": ["C++", "PROS", "Control Systems", "Git"], "link": "https://github.com/5150VEX/5150H-3" })} </div> </div> ${renderComponent($$result, "Projects", $$Projects, {})} <div class="flex justify-center items-center flex-col w-3/4 bg-[#e6be70] text-[#47342c] dark:bg-gray-800 dark:text-gray-200 p-7 m-3 mb-24 rounded-lg shadow-md delay-[0ms] duration-[300ms] taos:[transform:translate3d(0,200px,0)_scale(0.6)] taos:opacity-0" data-taos-offset="0"> <div class="font-['Schoolbell'] font-bold text-4xl text-center ">Contact Me</div> <div id="contact" class="mt-3 w-40 justify-around flex flex-row gap-x-2 duration-[300ms] taos:[transform:perspective(2500px)_rotateX(100deg)] taos:invisible taos:[backface-visibility:hidden]" data-taos-offset="100"> <a href="https://www.linkedin.com/in/aahil-nishad/" target="_blank" rel="noopener noreferrer" title="LinkedIn"> <span class="icon-[mdi--linkedin] size-8 fill-[#8d5c47] dark:fill-zinc-200"></span> </a> <a href="https://www.github.com/aahiltn" target="_blank" rel="noopener noreferrer" title="Github"> <span class="icon-[mdi--github] size-8 fill-[#8d5c47] dark:fill-zinc-200"></span> </a> <a href="../files/AN-resume.pdf" target="_blank" rel="noopener noreferrer" title="Resume"> <span class="icon-[mdi--file-download] size-8 fill-[#8d5c47] dark:fill-zinc-200"></span> </a> </div> ${renderComponent($$result, "FormContact", $$Contact, {})} </div> </div> </body></html>`;
+  return renderTemplate(_a || (_a = __template([`<html class="scroll-smooth" lang="en"> <head><!-- Google tag (gtag.js) --><script type="text/partytown" async src="https://www.googletagmanager.com/gtag/js?id=G-QHB0PLT6J6"><\/script><script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+  
+      gtag('config', 'G-QHB0PLT6J6');
+    <\/script><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.ico"><title>Portfolio: Aahil Nishad</title><meta property="og:title" content="Aahil Nishad"><meta property="og:type" content="website"><meta property="og:url" content="https://www.aahilnishad.me/"><meta property="og:description" content="Explore my projects, experiences, and contact me!"><meta property="og:site_name" content="Aahil Nishad's Portfolio"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Portfolio: Aahil Nishad"><meta name="twitter:description" content="Welcome to Aahil Nishad's portfolio. Explore my projects, experiences, and contact me for collaboration.">`, '</head> <body class="bg-[#D4A13D] dark:bg-gray-900 space-y-14 scroll-smooth pb-24 w-full"> <div class="relative w-full"> ', " </div> ", ' <div class="flex w-auto justify-center parent-container h-auto overflow-auto"> ', ' </div> <div class="flex flex-col w-full place-items-center" id="bio"> ', ' </div> <div id="experience" class="flex flex-col w-full place-items-center space-y-20"> <div class="grid w-3/4 justify-center bg-[#e6be70] text-[#47342c] dark:text-gray-200 dark:bg-gray-800 rounded-md shadow-lg p-3 delay-[100ms] duration-[600ms] taos:[transform:translate3d(0,200px,0)_scale(0.6)] taos:opacity-0" data-taos-offset="0"> <div class="font-[Schoolbell] font-extrabold p-4 text-4xl dark:text-gray-200 text-center">\nExperiences\n</div> <div class="flex flex-wrap justify-center gap-2"> ', " ", " </div> </div> ", ` <div class="flex justify-center items-center flex-col w-3/4 bg-[#e6be70] text-[#47342c] dark:bg-gray-800 dark:text-gray-200 p-7 m-3 mb-24 rounded-lg shadow-md delay-[0ms] duration-[300ms] taos:[transform:translate3d(0,200px,0)_scale(0.6)] taos:opacity-0" data-taos-offset="0"> <div class="font-['Schoolbell'] font-bold text-4xl text-center ">Contact Me</div> <div id="contact" class="mt-3 w-40 justify-around flex flex-row gap-x-2 duration-[300ms] taos:[transform:perspective(2500px)_rotateX(100deg)] taos:invisible taos:[backface-visibility:hidden]" data-taos-offset="100"> <a href="https://www.linkedin.com/in/aahil-nishad/" target="_blank" rel="noopener noreferrer" title="LinkedIn"> <span class="icon-[mdi--linkedin] size-8 fill-[#8d5c47] dark:fill-zinc-200"></span> </a> <a href="https://www.github.com/aahiltn" target="_blank" rel="noopener noreferrer" title="Github"> <span class="icon-[mdi--github] size-8 fill-[#8d5c47] dark:fill-zinc-200"></span> </a> <a href="../files/AN-resume.pdf" target="_blank" rel="noopener noreferrer" title="Resume"> <span class="icon-[mdi--file-download] size-8 fill-[#8d5c47] dark:fill-zinc-200"></span> </a> </div> `, " </div> </div> </body></html>"])), renderHead(), renderComponent($$result, "ThemeToggle", $$ThemeToggle, {}), renderComponent($$result, "Navbar", Navbar, { "client:load": true, "client:component-hydration": "load", "client:component-path": "C:/Users/aahil/Documents/Projects/portfolio/src/components/navbar.tsx", "client:component-export": "default" }), renderComponent($$result, "Instax", Instax, { "client:load": true, "client:component-hydration": "load", "client:component-path": "C:/Users/aahil/Documents/Projects/portfolio/src/components/instax.tsx", "client:component-export": "default" }), renderComponent($$result, "Bio", $$Bio, {}), renderComponent($$result, "Card", $$Card, { "title": "Software Developer", "description": "Contributor to FinishLine, a project management dashboard used by by 100+ engineers for the construction of a competitive Formula SAE and FH+E racing car.", "location": "Northeastern Electric Racing", "dates": "Jan. 2024 - Present", "image": "https://electricracing.northeastern.edu/wp-content/uploads/2021/02/cropped-Logo-Transparent-180x180.png", "stack": ["React", "Typescript", "Git", "CSS"], "link": "https://finishlinebyner.com/" }), renderComponent($$result, "Card", $$Card, { "title": "Software Developer", "description": "Implemented control systems in C++ and developed autonomous routing in cooperation with other members for team 5150H in use for 20+ competitions and 18+ awards.", "location": "Vex Team: 5150H", "dates": "Sep. 2021 - June 2023", "image": havoc.src, "stack": ["C++", "PROS", "Control Systems", "Git"], "link": "https://github.com/5150VEX/5150H-3" }), renderComponent($$result, "Projects", $$Projects, {}), renderComponent($$result, "FormContact", $$Contact, {}));
 }, "C:/Users/aahil/Documents/Projects/portfolio/src/pages/index.astro", void 0);
 
 const $$file = "C:/Users/aahil/Documents/Projects/portfolio/src/pages/index.astro";

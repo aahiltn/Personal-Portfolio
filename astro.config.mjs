@@ -19,11 +19,7 @@ export default defineConfig({
     icon(),
     sitemap(),
     mdx(),
-    partytown({
-      config: {
-        forward: ["dataLayer.push"],
-      },
-    }),
+    partytown(),
   ],
   output: "server",
   adapter: vercel(),

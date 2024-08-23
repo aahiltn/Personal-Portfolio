@@ -9,10 +9,9 @@ const FriendlyCaptcha = () => {
   const isHuman = useStore(human); // Move useStore out of the render
 
   const doneCallback = async (solution: string) => {
-    console.log(solution);
     const json = {
       solution: solution,
-      secret: "A1I1U9MMC1A9ODH2FO63FRCDBCQNGOCLIRJV3R8OFHAD2HHURR83T9HMGA",
+      secret: import.meta.env.FCAPTCHA_API,
     };
 
     try {
@@ -38,9 +37,7 @@ const FriendlyCaptcha = () => {
       // } else {
       //   console.log("There was an error when trying to solve the Captcha.");
       //   // }
-    } catch (error) {
-      console.error(error);
-    }
+    } catch (error) {}
   };
 
   const errorCallback = (err: Error) => {

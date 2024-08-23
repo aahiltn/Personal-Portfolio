@@ -1,6 +1,5 @@
 ---
 import FriendlyCaptcha from "./captcha";
-import { useStore } from "@nanostores/react";
 ---
 
 <form class="flex flex-wrap space-2 p-2" id="form" action="https://api.web3forms.com/submit" method="POST">
@@ -26,15 +25,9 @@ import { useStore } from "@nanostores/react";
         <label class="text-zinc-800 dark:text-zinc-200">Message <span class="text-rose-800 dark:text-rose-400">*</span> </label>
         <textarea class="focus:dark:ring-yellow-500 text-zinc-800 dark:bg-gray-400 bg-amber-50 w-full p-3 rounded-lg" name="message" rows="4" placeholder="Message" required></textarea>
     </div>
-
     <div class="w-full flex flex-col space-y-2 mt-2 justify-center items-center"> 
         <FriendlyCaptcha client:load/>
-        <button class="w-auto rounded-lg dark:bg-gray-600 dark:text-gray-200 text-yellow-950 font-bold hover:shadow-xl hover:outline-1 dark:hover:bg-gray-700 hover:bg-yellow-600 bg-[#D4A13D] justify-center py-2 align-middle px-4" type="submit">
-            Send Message
-        </button>
-    
     </div>
-    
   </form>
 
   <script>

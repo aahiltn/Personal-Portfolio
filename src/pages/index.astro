@@ -7,7 +7,6 @@ import FormContact from '../components/contact.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
 import Card from '../components/card.astro';
 import havoc from '../images/projects/havoc.png';
-import FriendlyCaptcha from '../components/captcha.jsx';
 ---
 
 <html class="scroll-smooth" lang="en">
@@ -18,7 +17,6 @@ import FriendlyCaptcha from '../components/captcha.jsx';
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-QHB0PLT6J6');
     </script>
     
@@ -86,13 +84,13 @@ import FriendlyCaptcha from '../components/captcha.jsx';
         <div class="font-['Schoolbell'] font-bold text-4xl text-center ">Contact Me</div>
         <div id="contact" class="mt-3 w-40 justify-around flex flex-row gap-x-2 duration-[300ms] taos:[transform:perspective(2500px)_rotateX(100deg)] taos:invisible taos:[backface-visibility:hidden]" data-taos-offset="100">
           <a href="https://www.linkedin.com/in/aahil-nishad/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-			<span class="icon-[mdi--linkedin] size-8 fill-[#8d5c47] dark:fill-zinc-200"></span>
+			      <span class="icon-[mdi--linkedin] size-8 fill-[#8d5c47] dark:fill-zinc-200 hover:scale-110 duration-300"></span>
           </a>
           <a href="https://www.github.com/aahiltn" target="_blank" rel="noopener noreferrer" title="Github">
-            <span class="icon-[mdi--github] size-8 fill-[#8d5c47] dark:fill-zinc-200"></span>
+            <span class="icon-[mdi--github] size-8 fill-[#8d5c47] dark:fill-zinc-200 hover:scale-110 duration-300"></span>
           </a>
           <a href="../files/AN-resume.pdf" target="_blank" rel="noopener noreferrer" title="Resume">
-            <span class="icon-[mdi--file-download] size-8 fill-[#8d5c47] dark:fill-zinc-200"></span>
+            <span class="icon-[mdi--file-download] size-8 fill-[#8d5c47] dark:fill-zinc-200 hover:scale-110 duration-300"></span>
           </a>
         </div>
         <FormContact />

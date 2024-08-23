@@ -14,7 +14,6 @@ const Navbar: React.FC = () => {
       <a
         className="mt-8 gap-2 text-2xl font-semibold group transition duration-400"
         onMouseEnter={() => setDirection("bio")}
-        //onMouseLeave={() => setDirection("home")}
         href={`#${dir}`}
       >
         Bio
@@ -23,7 +22,6 @@ const Navbar: React.FC = () => {
       <a
         className="mt-8 gap-3 text-2xl font-semibold group transition duration-400"
         onMouseEnter={() => setDirection("experience")}
-        // onMouseLeave={() => setDirection("home")}
         href={`#${direction.get()}`}
       >
         Experiences
@@ -32,7 +30,6 @@ const Navbar: React.FC = () => {
       <a
         className="mt-8 gap-3 text-2xl font-semibold group transition duration-400"
         onMouseEnter={() => setDirection("projects")}
-        // onMouseLeave={() => setDirection("home")}
         href={`#${direction.get()}`}
       >
         Projects
@@ -41,7 +38,6 @@ const Navbar: React.FC = () => {
       <a
         className="mt-8 gap-3 text-2xl font-semibold group transition duration-400"
         onMouseEnter={() => setDirection("contact")}
-        //onMouseLeave={() => setDirection("home")}
         href={`#${direction.get()}`}
       >
         Contact

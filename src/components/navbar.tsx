@@ -6,7 +6,6 @@ const Navbar: React.FC = () => {
   function setDirection(dir: string) {
     direction.set(dir);
     setHint(true);
-    console.log(hint);
   }
 
   const dir = useStore(direction);
@@ -46,10 +45,7 @@ const Navbar: React.FC = () => {
         Contact
         <div className="justify-items-center block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 dark:bg-yellow-500 bg-amber-900"></div>
         {!hint && (
-          <div
-            className="absolute transform -left-2 translate-x-1/4 p-1.5 top-8 duration-500 rounded-sm bg-[#2d3739] text-xs dark:text-gray-200 text-[#412819] delay-[800ms] taos:opacity-0"
-            data-taos-offset="500"
-          >
+          <div className="absolute transform -left-2 translate-x-1/4 p-1.5 top-8 duration-500 rounded-sm bg-amber-950 dark:bg-[#2d3739] text-xs text-gray-200 delay-[800ms] taos:opacity-0">
             Hover me!
           </div>
         )}

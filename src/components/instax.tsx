@@ -34,7 +34,7 @@ const Instax: React.FC = () => {
       <div className="sticky top-0 bg-white my-4 font-['Schoolbell'] flex flex-col justify-center text-center">
         <span className="text-4xl font-extrabold">Aahil Nishad</span>
         <span className="text-lg font-semibold">
-          Northeastern '27, BSCS, Software Dev
+          Northeastern '27, Honors CS
         </span>
       </div>
     </div>

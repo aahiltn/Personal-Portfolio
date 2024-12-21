@@ -9,6 +9,7 @@ const location = Astro.props.location;
 const image = Astro.props.image;
 const stack = Astro.props.stack;
 const link = Astro.props.link;
+const company = Astro.props.company;
 ---
 
 <a class="hover:scale-105 w-auto max-w-md shadow-md bg-amber-50 dark:text-gray-900 dark:bg-gray-400 m-5 hover:shadow-black hover:ring-4 hover:ring-[#8d5c47] dark:hover:ring-yellow-500 rounded-md p-6 grid gap-6
@@ -24,12 +25,14 @@ delay-[200ms] duration-[400ms] taos:scale-[0.6] taos:opacity-0" data-taos-offset
       />
     </div>
     <div class="grid gap-1">
-      <h3 class="text-xl font-semibold">{title}</h3>
+      <span class="flex items-baseline gap-2"><h3 class="text-xl font-semibold">{title}</h3><span class="text-sm text-muted-foreground">{dates}</span></span> 
+
       <div class="flex items-center gap-1 text-sm text-muted-foreground">
-        <span>{location}</span>
+        <span>{company}</span>
         <span>·</span>
-        <span>{dates}</span>
+        <span>{location}</span>
       </div>
+
     </div>
     </div>
   <p class="text-muted-foreground">

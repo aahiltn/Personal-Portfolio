@@ -7,6 +7,7 @@ import FormContact from "../components/contact.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import Card from "../components/card.astro";
 import havoc from "../images/projects/havoc.png";
+import Menu from "../components/menu";
 ---
 
 <html class="scroll-smooth" lang="en">
@@ -55,15 +56,14 @@ import havoc from "../images/projects/havoc.png";
       <div class="relative w-full">
         <ThemeToggle />
       </div>
-      <Navbar client:load />
-      <div
-        class="flex w-auto justify-center parent-container h-auto overflow-visible"
-      >
+      <div class="ml-40 m-20 justify-around flex flex-row">
         <Instax client:load />
+        <div class="flex flex-col">
+          <Menu client:load />
+          <Bio />
+        </div>
       </div>
-      <div class="flex flex-col w-full place-items-center" id="bio">
-        <Bio />
-      </div>
+      <div class="flex flex-col w-full place-items-center" id="bio"></div>
       <div
         id="experience"
         class="flex flex-col w-full place-items-center space-y-20"

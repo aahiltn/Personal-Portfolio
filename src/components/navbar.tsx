@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useStore } from "@nanostores/react";
 import { direction } from "../store.js";
+import "@fontsource/schoolbell";
 
 const Navbar: React.FC = () => {
   function setDirection(dir: string) {
@@ -14,7 +15,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className="bg-transparent text-[#412819] dark:text-gray-200 flex flex-wrap w-full justify-around place-items-center">
       <a
-        className="mt-8 gap-2 text-2xl font-semibold group transition duration-400"
+        className="mt-8 gap-2 text-2xl font-[Schoolbell] font-semibold group transition duration-400"
         onMouseEnter={() => setDirection("bio")}
         href={`#${dir}`}
       >
@@ -22,7 +23,7 @@ const Navbar: React.FC = () => {
         <div className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 dark:bg-yellow-500 bg-amber-900"></div>
       </a>
       <a
-        className="mt-8 gap-3 text-2xl font-semibold group transition duration-400"
+        className="mt-8 gap-3 text-2xl font-[Schoolbell] font-semibold group transition duration-400"
         onMouseEnter={() => setDirection("experience")}
         href={`#${direction.get()}`}
       >
@@ -30,7 +31,7 @@ const Navbar: React.FC = () => {
         <div className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 dark:bg-yellow-500 bg-amber-900"></div>
       </a>
       <a
-        className="mt-8 gap-3 text-2xl font-semibold group transition duration-400"
+        className="mt-8 gap-3 text-2xl font-[Schoolbell] font-semibold group transition duration-400"
         onMouseEnter={() => setDirection("projects")}
         href={`#${direction.get()}`}
       >
@@ -38,7 +39,7 @@ const Navbar: React.FC = () => {
         <div className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 dark:bg-yellow-500 bg-amber-900"></div>
       </a>
       <a
-        className="mt-8 gap-3 text-2xl font-semibold group transition duration-400 relative justify-center"
+        className="mt-8 gap-3 text-2xl font-[Schoolbell] font-semibold group transition duration-400 relative justify-center"
         onMouseEnter={() => setDirection("contact")}
         href={`#${direction.get()}`}
       >

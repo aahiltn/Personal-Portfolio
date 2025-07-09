@@ -1,0 +1,79 @@
+[
+  {
+    "title": "Member of Technical Staff",
+    "description": "Architecting and developing an AI-enhanced platform for managing therapy services for children with special needs.",
+    "company": "Healthtech Startup",
+    "dates": "Jul. 2025 - Present",
+    "location": "Remote",
+    "image": "https://media.licdn.com/dms/image/v2/D560BAQHeVOIH8ijsew/company-logo_200_200/company-logo_200_200/0/1692431744222?e=2147483647&v=beta&t=z5xlYmQp5tdGyjT0DfupEgIHYyxHuR6l_PPW1pZmy60",
+    "stack": [
+      "Golang",
+      "TypeScript",
+      "MySQL",
+      "Docker",
+      "GoFiber",
+      "React",
+      "GORM",
+      "AWS"
+    ],
+    "link": ""
+  },
+  {
+    "title": "Software Engineering Co-op",
+    "description": "As part of the AI & Data Team and Tech Ambassador's office, contributed to the development of a cloud-based platform for real-time data analytics and visualization.",
+    "company": "Verizon Communications x NExT",
+    "location": "Boston, MA",
+    "dates": "Jan. 2024 - Jul. 2025",
+    "image": "https://companieslogo.com/img/orig/VZ-13e34d8e.png?t=1720244494",
+    "stack": [
+      "AWS",
+      "Python",
+      "TypeScript",
+      "PostgreSQL",
+      "Docker",
+      "React",
+      "FastAPI",
+      "Botocore"
+    ],
+    "link": "https://www.verizon.com"
+  },
+  {
+    "title": "Software Engineer",
+    "description": "Collaborate with designers, developers, and clients to build a series of full stack applications (Platnm, Dearly) in 4-month cycles.",
+    "company": "Generate Product Development",
+    "location": "Boston, MA",
+    "dates": "Sep. 2024 - Present",
+    "image": "https://generatenu.com/static/media/footerlogo.d440f7033ee504348579ee089ed4ae88.svg",
+    "stack": [
+      "React Native",
+      "Go",
+      "TypeScript",
+      "Expo",
+      "PostgreSQL",
+      "Fiber",
+      "Nix",
+      "Figma"
+    ],
+    "link": "https://generatenu.com"
+  },
+  {
+    "title": "Software Developer",
+    "description": "Contributor to FinishLine, a project management dashboard used by by 100+ engineers for the construction of a competitive Formula SAE and FH+E racing car.",
+    "company": "Northeastern Electric Racing",
+    "location": "Boston, MA",
+    "dates": "Jan. 2024 - May 2024",
+    "image": "https://electricracing.northeastern.edu/wp-content/uploads/2021/02/cropped-Logo-Transparent-180x180.png",
+    "stack": ["React", "Typescript", "Git", "CSS"],
+    "link": "https://finishlinebyner.com/"
+  },
+  {
+    "title": "Software Developer",
+    "description": "Implemented control systems in C++ and developed autonomous routing in cooperation with other members for team 5150H in use for 20+ competitions and 18+ awards. Mentored other teams in CT & MA.",
+    "company": "Vex Team: 5150H",
+    "location": "Danbury, CT",
+    "dates": "Sep. 2021 - June 2023",
+    "image": "https://user.uploads.dev/file/7710a788a81724057b21cfabb52d0896.png",
+    "stack": ["C++", "PROS", "Control Systems", "Git"],
+    "link": "https://github.com/5150VEX/5150H-3"
+  }
+]

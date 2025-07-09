@@ -1,0 +1,124 @@
+[
+  {
+    "title": "Dearly",
+    "description": "An accessibility-first private family-sharing app. Share photos, videos, and memories with your family in a secure, private space.",
+    "dates": "Jan. 2025 - Apr. 2025",
+    "image": "DearlyIcon",
+    "company": "Generate Product Development",
+    "location": "Boston, MA",
+    "stack": [
+      "React Native",
+      "Hono",
+      "TypeScript",
+      "Cloud Run",
+      "Drizzle",
+      "PostgreSQL + Supabase",
+      "Nativewind",
+      "OpenAPI",
+      "Jest"
+    ],
+    "link": "https://github.com/GenerateNU/dearly"
+  },
+  {
+    "title": "Briefcase",
+    "description": "An automated job-application tracker that automatically routes emails and assigns statuses to applications. Bye bye Excel.",
+    "dates": "Feb. 2025",
+    "image": "BriefcaseIcon",
+    "company": "HackBeanpot2025",
+    "location": "Boston, MA",
+    "stack": [
+      "AWS",
+      "TypeScript",
+      "React",
+      "DynamoDB",
+      "Clerk",
+      "S3",
+      "SES",
+      "AWS Lambda"
+    ],
+    "link": "https://github.com/aahiltn/arcade-jobs"
+  },
+  {
+    "title": "Cairn",
+    "description": "A travel scheduling app enabling users to import iCal files, drag and drop events, and export plans. Make trips that rock.",
+    "dates": "Jan. 2025 - Feb. 2025",
+    "image": "CairnLogo",
+    "company": "NExT",
+    "location": "Boston, MA",
+    "stack": [
+      "React",
+      "TypeScript",
+      "Express",
+      "TripAdvisor API",
+      "Azure Container Apps"
+    ],
+    "link": "/experiences/cairn"
+  },
+  {
+    "title": "Platnm",
+    "description": "The one-stop shop for all musical discourse—bringing music reviews back to the masses.",
+    "dates": "Sep. 2024 - Dec. 2024",
+    "image": "platnm",
+    "company": "Generate Product Development",
+    "location": "Boston, MA",
+    "stack": [
+      "React Native",
+      "Go",
+      "TypeScript",
+      "Expo",
+      "PostgreSQL + Supabase",
+      "Fiber",
+      "Nix",
+      "Spotify API"
+    ],
+    "link": "https://github.com/GenerateNU/platnm"
+  },
+  {
+    "title": "Narro",
+    "description": "An AI-powered language assessment platform with image generation and automatic grading.",
+    "location": "Boston, MA",
+    "dates": "Nov. 2024",
+    "image": "narro",
+    "stack": [
+      "Next.js",
+      "React",
+      "GPT-4o",
+      "Dall-E 3",
+      "TypeScript",
+      "Prisma ORM",
+      "MongoDB Atlas"
+    ],
+    "company": "SiliconXL Launchathon",
+    "link": "https://github.com/aahiltn/narro"
+  },
+  {
+    "title": "Carbon Connect",
+    "description": "A carbon-emissions calculator and tracker for EU-based residents, companies, and organizations.",
+    "location": "Leuven, Belgium",
+    "dates": "June 2024",
+    "image": "CarbonConnect",
+    "stack": ["Python", "MySQL", "Docker", "Streamlit", "Flask"],
+    "company": "Northeastern x KU Leuven",
+    "link": "https://github.com/mehallhm/wafflers"
+  },
+  {
+    "title": "Let's Link",
+    "description": "An easy, informal way to meet up with friends. Awarded Best Use of MongoDB Atlas by Major League Hacking.",
+    "dates": "Feb. 2024",
+    "location": "Boston, MA",
+    "image": "LetsLink",
+    "stack": ["Next.js", "React", "MongoDB Atlas", "Google OAuth"],
+    "company": "HackBeanpot2024",
+    "link": "https://letslink.club/"
+  },
+  {
+    "title": "tunul",
+    "description": "A step-by-step tunnel navigation of the Northeastern University Boston Campus. Made simple.",
+    "dates": "Apr. 2024",
+    "location": "Boston, MA",
+    "image": "tunul",
+    "stack": ["Next.js", "React", "Typescript", "Javascript", "JSON"],
+    "company": "Oasis at Northeastern",
+    "link": "https://tunul.netlify.app/"
+  }
+]

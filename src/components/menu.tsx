@@ -50,7 +50,7 @@ const Menu: React.FC = () => {
 
   const CircularTimer = () => (
     <motion.div
-      className="absolute -top-2 -right-2 w-6 h-6 pointer-events-none"
+      className="absolute -top-2 -right-6 w-6 h-6 pointer-events-none"
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       exit={{ scale: 0, opacity: 0 }}
@@ -95,10 +95,9 @@ const Menu: React.FC = () => {
         className="mt-8 gap-3 text-2xl font-[Schoolbell] font-semibold group transition duration-400 relative"
         onMouseEnter={() => handleMouseEnter("experience")}
         onMouseLeave={handleMouseLeave}
-        href={`#${direction.get()}`}
+        href="/experience/"
       >
         Experiences
-        <div className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 dark:bg-yellow-500 bg-amber-900"></div>
         <AnimatePresence>
           {hoveredItem === "experience" && isTimerActive && <CircularTimer />}
         </AnimatePresence>
@@ -108,23 +107,26 @@ const Menu: React.FC = () => {
         className="mt-8 gap-3 text-2xl font-[Schoolbell] font-semibold group transition duration-400 relative"
         onMouseEnter={() => handleMouseEnter("projects")}
         onMouseLeave={handleMouseLeave}
-        href={`#${direction.get()}`}
+        href="/projects/"
       >
         Projects
-        <div className="block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 dark:bg-yellow-500 bg-amber-900"></div>
         <AnimatePresence>
           {hoveredItem === "projects" && isTimerActive && <CircularTimer />}
         </AnimatePresence>
       </a>
 
-      <a
+      <button
         className="mt-8 gap-3 text-2xl font-[Schoolbell] font-semibold group transition duration-400 relative justify-center"
         onMouseEnter={() => handleMouseEnter("contact")}
         onMouseLeave={handleMouseLeave}
-        href={`#${direction.get()}`}
+        onClick={() => {
+          const contactButton = document.getElementById("contact-button");
+          if (contactButton) {
+            contactButton.click();
+          }
+        }}
       >
         Contact
-        <div className="justify-items-center block max-w-0 group-hover:max-w-full transition-all duration-300 h-0.5 dark:bg-yellow-500 bg-amber-900"></div>
         <AnimatePresence>
           {hoveredItem === "contact" && isTimerActive && <CircularTimer />}
         </AnimatePresence>
@@ -133,7 +135,7 @@ const Menu: React.FC = () => {
             Hover me!
           </div>
         )}
-      </a>
+      </button>
     </nav>
   );
 };

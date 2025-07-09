@@ -28,6 +28,7 @@ interface PhotoCard {
   rotation: number;
   zIndex: number;
   timestamp: number;
+  shouldStraighten?: boolean;
 }
 
 const Instax: React.FC = () => {
@@ -48,6 +49,9 @@ const Instax: React.FC = () => {
           (photo) => photo.id === topPhoto.id || now - photo.timestamp < 5000
         );
 
+        if (filteredStack.length === 1 && filteredStack[0].id === topPhoto.id) {
+          filteredStack[0].shouldStraighten = true; // Mark the top photo to straighten
+        }
         // Only update if something was removed
         return filteredStack.length !== prev.length ? filteredStack : prev;
       });
@@ -98,7 +102,7 @@ const Instax: React.FC = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="relative w-[25rem] h-auto">
+      <div className="relative w-[18rem] h-auto">
         <AnimatePresence>
           {photoStack.map((photo) => (
             <motion.div
@@ -107,7 +111,6 @@ const Instax: React.FC = () => {
               style={{
                 zIndex: photo.zIndex,
               }}
-              onMouseEnter={() => !isMobile && direction.set("home")}
               initial={
                 photo.id === 1
                   ? false

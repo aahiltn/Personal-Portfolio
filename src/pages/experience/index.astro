@@ -1,0 +1,30 @@
+---
+import Card from "../../components/base/card.astro";
+import experiences from "../../data/experiences.json";
+import type { Project } from "../../types";
+---
+
+<body class="bg-[#D4A13D] p-4 dark:bg-gray-900">
+  <div
+    class="font-[Schoolbell] font-extrabold p-4 text-4xl dark:text-gray-200 text-center"
+  >
+    Experiences
+  </div>
+  <div class="flex flex-wrap justify-center gap-2">
+    {
+      experiences.map((project: Project, index: number) => (
+        <Card
+          key={index}
+          title={project.title}
+          description={project.description}
+          dates={project.dates}
+          image={project.image}
+          company={project.company}
+          location={project.location}
+          stack={project.stack}
+          link={project.link}
+        />
+      ))
+    }
+  </div>
+</body>

@@ -1,63 +1,128 @@
 ---
 import { human } from "../store";
 ---
-<form class="flex flex-wrap space-2 p-2" id="form" action="https://api.web3forms.com/submit" method="POST">
-    <input type="hidden" name="access_key" value="e2c82ab0-f06a-4ad2-9dc7-c5dc439c10a8"/>
-    <div class="text-lg w-1/2 w-min-24 gap-y-2 p-2 flex-col flex delay-[50ms] duration-[300ms] taos:[transform:perspective(2500px)_rotateX(-100deg)] taos:invisible taos:[backface-visibility:hidden]" data-taos-offset="100">
-        <label class="text-zinc-800 dark:text-zinc-200" >First Name <span class="text-rose-800 dark:text-rose-400">*</span> </label>
-        <input class="dark:focus:ring-yellow-500 text-zinc-800 dark:bg-gray-400 bg-amber-50 p-3 rounded-lg"  type="text" name="first" placeholder="First Name" required />
-    </div>
-    <div class="text-lg w-1/2 w-min-24 gap-y-2 p-2 flex-col flex delay-[100ms] duration-[300ms] taos:[transform:perspective(2500px)_rotateX(-100deg)] taos:invisible taos:[backface-visibility:hidden]" data-taos-offset="100">
-        <label class="text-zinc-800 dark:text-zinc-200">Last Name <span class="text-rose-800 dark:text-rose-400">*</span> </label>
-        <input class="focus:dark:ring-yellow-500  text-zinc-800 dark:bg-gray-400 bg-amber-50 p-3 rounded-lg"  type="text" name="last" placeholder="Last Name" />
-    </div>
-    <div class="text-lg p-2 gap-y-2 flex-col flex w-min-30 w-3/5 delay-[150ms] duration-[300ms] taos:[transform:perspective(2500px)_rotateX(-100deg)] taos:invisible taos:[backface-visibility:hidden]" data-taos-offset="100">
-        <label class="text-zinc-800 dark:text-zinc-200">Email Address <span class="text-rose-800 dark:text-rose-400">*</span> </label>
-        <input class="focus:dark:ring-yellow-500  text-zinc-800 dark:bg-gray-400 bg-amber-50 p-3 rounded-lg" type="email" name="email" inputmode="email" placeholder="example@example.com" required />
-    </div>
-    <div class="text-lg p-2 gap-y-2 flex-col flex w-min-24 w-2/5 delay-[200ms] duration-[300ms] taos:[transform:perspective(2500px)_rotateX(-100deg)] taos:invisible taos:[backface-visibility:hidden]" data-taos-offset="100">
-        <label class="text-zinc-800 dark:text-zinc-200">Organization</label>
-        <input class="focus:dark:ring-yellow-500  text-zinc-800 dark:bg-gray-400 bg-amber-50 p-3 rounded-lg" type="text" name="organization" placeholder="Org Name" />
-    </div>
-    
-    <div class="text-lg p-2 gap-y-2 h-36 flex-col flex w-full delay-[250ms] duration-[300ms] taos:[transform:perspective(2500px)_rotateX(-100deg)] taos:invisible taos:[backface-visibility:hidden]" data-taos-offset="100">
-        <label class="text-zinc-800 dark:text-zinc-200">Message <span class="text-rose-800 dark:text-rose-400">*</span> </label>
-        <textarea class="focus:dark:ring-yellow-500 text-zinc-800 dark:bg-gray-400 bg-amber-50 w-full p-3 rounded-lg" name="message" rows="4" placeholder="Message" required></textarea>
-    </div>
-    <div class="w-full flex flex-col space-y-2 mt-2 justify-center items-center"> 
-        <button
-        class="duration-200 w-auto rounded-lg dark:bg-gray-600 dark:text-gray-200 text-yellow-950 font-bold hover:shadow-xl hover:outline-1 dark:hover:bg-gray-700 hover:bg-yellow-600 bg-[#D4A13D] justify-center py-2 align-middle px-4"
+
+<form id="form" action="https://api.web3forms.com/submit" method="POST">
+  <div class="flex w-full justify-between items-center mb-4">
+    <span
+      class="font-[Schoolbell] text-left font-bold text-3xl
+            dark:text-gray-200 text-[#402d25]"
+      >Nice to meet you.
+    </span>
+    <div>
+      <button
+        class="duration-200 w-auto rounded-lg dark:bg-gray-600 dark:text-gray-200 text-yellow-950 font-bold hover:shadow-xl hover:outline-1 dark:hover:bg-gray-700 hover:bg-yellow-600 bg-[#D4A13D] justify-center py-1 align-middle px-3 text-sm"
         type="submit"
         hidden={human.value}
       >
         Send Message
       </button>
     </div>
-  </form>
+  </div>
+  <div class="flex flex-wrap">
+    <input
+      type="hidden"
+      name="access_key"
+      value="e2c82ab0-f06a-4ad2-9dc7-c5dc439c10a8"
+    />
+    <div
+      class="text-base w-1/2 w-min-24 gap-y-1 p-1 flex-col flex delay-[50ms] duration-[300ms] taos:[transform:perspective(2500px)_rotateX(-100deg)] taos:invisible taos:[backface-visibility:hidden]"
+      data-taos-offset="100"
+    >
+      <label class="text-zinc-800 dark:text-zinc-200"
+        >First Name <span class="text-rose-800 dark:text-rose-400">*</span>
+      </label>
+      <input
+        class="dark:focus:ring-yellow-500 text-zinc-800 dark:bg-gray-400 bg-amber-50 p-2 rounded-lg"
+        type="text"
+        name="first"
+        placeholder="First Name"
+        required
+      />
+    </div>
+    <div
+      class="text-base w-1/2 w-min-24 gap-y-1 p-1 flex-col flex delay-[100ms] duration-[300ms] taos:[transform:perspective(2500px)_rotateX(-100deg)] taos:invisible taos:[backface-visibility:hidden]"
+      data-taos-offset="100"
+    >
+      <label class="text-zinc-800 dark:text-zinc-200"
+        >Last Name <span class="text-rose-800 dark:text-rose-400">*</span>
+      </label>
+      <input
+        class="focus:dark:ring-yellow-500 text-zinc-800 dark:bg-gray-400 bg-amber-50 p-2 rounded-lg"
+        type="text"
+        name="last"
+        placeholder="Last Name"
+      />
+    </div>
+    <div
+      class="text-base p-1 gap-y-1 flex-col flex w-min-30 w-3/5 delay-[150ms] duration-[300ms] taos:[transform:perspective(2500px)_rotateX(-100deg)] taos:invisible taos:[backface-visibility:hidden]"
+      data-taos-offset="100"
+    >
+      <label class="text-zinc-800 dark:text-zinc-200"
+        >Email Address <span class="text-rose-800 dark:text-rose-400">*</span>
+      </label>
+      <input
+        class="focus:dark:ring-yellow-500 text-zinc-800 dark:bg-gray-400 bg-amber-50 p-2 rounded-lg"
+        type="email"
+        name="email"
+        inputmode="email"
+        placeholder="example@example.com"
+        required
+      />
+    </div>
+    <div
+      class="text-base p-1 gap-y-1 flex-col flex w-min-24 w-2/5 delay-[200ms] duration-[300ms] taos:[transform:perspective(2500px)_rotateX(-100deg)] taos:invisible taos:[backface-visibility:hidden]"
+      data-taos-offset="100"
+    >
+      <label class="text-zinc-800 dark:text-zinc-200">Organization</label>
+      <input
+        class="focus:dark:ring-yellow-500 text-zinc-800 dark:bg-gray-400 bg-amber-50 p-2 rounded-lg"
+        type="text"
+        name="organization"
+        placeholder="Org Name"
+      />
+    </div>
 
-  <script>
-    const form = document.getElementById('form');
-    const url = 'https://api.web3forms.com/submit';
-    
-    form?.addEventListener('submit', (e) => {
+    <div
+      class="text-base p-1 gap-y-1 h-32 flex-col flex w-full delay-[250ms] duration-[300ms] taos:[transform:perspective(2500px)_rotateX(-100deg)] taos:invisible taos:[backface-visibility:hidden]"
+      data-taos-offset="100"
+    >
+      <label class="text-zinc-800 dark:text-zinc-200"
+        >Message <span class="text-rose-800 dark:text-rose-400">*</span>
+      </label>
+      <textarea
+        class="focus:dark:ring-yellow-500 text-zinc-800 dark:bg-gray-400 bg-amber-50 w-full p-2 rounded-lg"
+        name="message"
+        rows="3"
+        placeholder="Message"
+        required></textarea>
+    </div>
+  </div>
+</form>
+
+<script>
+  const form = document.getElementById("form");
+  const url = "https://api.web3forms.com/submit";
+
+  form?.addEventListener("submit", (e) => {
     e.preventDefault();
     const formData = new FormData(form as HTMLFormElement);
     fetch(url, {
-        method: 'POST',
-        body: formData,
+      method: "POST",
+      body: formData,
     })
-    .then(async (response) => {
+      .then(async (response) => {
         const json = await response.json();
-        
+
         if (response.status == 200) {
-            alert('Success! Thanks for the message.');
+          alert("Success! Thanks for the message.");
         } else {
-        alert('Error submitting form!');
-        console.log(response);
+          alert("Error submitting form!");
+          console.log(response);
         }
-        })
-        .catch((error) => {
-        console.error('Error submitting form:', error);
-        });
-    });
-  </script>
+      })
+      .catch((error) => {
+        console.error("Error submitting form:", error);
+      });
+  });
+</script>

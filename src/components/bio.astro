@@ -1,20 +1,60 @@
 ---
 import "@fontsource/schoolbell";
+import Out from "./out.astro";
+import FormContact from "./contact.astro";
 ---
-<div class=`text-center bg-[#e6be70] text-black dark:text-gray-200 w-3/4 space-y-4 h-auto p-7 rounded-lg dark:bg-gray-800 shadow-md
-        delay-[0ms] duration-[600ms] taofws:[transform:translate3d(0,200px,0)_scale(0.6)] taos:opacity-0` data-taos-offset="0" id="bio">
-    <span class="font-[Schoolbell] font-bold text-3xl dark:text-gray-200 text-[#402d25]">Hey there! I'm Aahil.</span>
-    <div class="flex text-xl">
-        I'm a student developer based out of Boston, MA. I'm currently studying Computer Science at Northeastern University, 
-        and looking for a career in artificial intelligence and software development.
-    </div>
-    <div class="flex text-xl">
-        When developing, my inspiration is the world around me. 
-        I love to build things that make a difference and I'm always looking for new opportunities to learn and grow. 
-        When I'm not behind the keyboard, I'm a huge traveler, and you can find me out playing tennis or tucked away watching a show. 
-    </div>
-</div>
-<script src="https://unpkg.com/taos@1.0.5/dist/taos.js"></script>
-<script>
 
+<div id="bio-content">
+  <div class="justify-end">
+    <span
+      class="font-[Schoolbell] text-left font-bold text-3xl
+      dark:text-gray-200 text-[#402d25]"
+      >Hey, I'm Aahil.
+    </span>
+    <Out />
+  </div>
+
+  <span
+    class="text-left font-semibold text-sm dark:text-gray-200 text-[#402d25]"
+  >
+    Currently: Member of Technical Staff @ Healthtech Startup
+  </span>
+  <div class="mb-4">
+    When developing, my inspiration is the world around me. I love to build
+    things that make a difference and I'm always looking for new opportunities
+    to learn and grow. When I'm not behind the keyboard, I'm a huge traveler and
+    foodie.
+  </div>
+
+  <button
+    id="contact-button"
+    class="hidden px-4 py-2 bg-[#402d25] text-white rounded-md hover:bg-[#5a4037] transition-colors"
+  >
+    Contact Me
+  </button>
+</div>
+
+<div id="contact-form" class="hidden">
+  <FormContact />
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const contactButton = document.getElementById("contact-button");
+    const bioContent = document.getElementById("bio-content");
+    const contactForm = document.getElementById("contact-form");
+
+    contactButton?.addEventListener("click", () => {
+      // Toggle between bio and contact form
+      if (bioContent?.classList.contains("hidden")) {
+        // Show bio, hide contact form
+        bioContent?.classList.remove("hidden");
+        contactForm?.classList.add("hidden");
+      } else {
+        // Show contact form, hide bio
+        bioContent?.classList.add("hidden");
+        contactForm?.classList.remove("hidden");
+      }
+    });
+  });
 </script>

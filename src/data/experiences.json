@@ -14,12 +14,15 @@
       "GoFiber",
       "React",
       "GORM",
+      "Figma",
+      "Astro",
+      "Tailwind",
       "AWS"
     ],
     "link": ""
   },
   {
-    "title": "Software Engineering Co-op",
+    "title": "Software Engineer Co-op",
     "description": "As part of the AI & Data Team and Tech Ambassador's office, contributed to the development of a cloud-based platform for real-time data analytics and visualization.",
     "company": "Verizon Communications x NExT",
     "location": "Boston, MA",
@@ -31,9 +34,16 @@
       "TypeScript",
       "PostgreSQL",
       "Docker",
+      "Terraform",
       "React",
+      "TanStack Query",
       "FastAPI",
-      "Botocore"
+      "SQLAlchemy",
+      "NLP Models",
+      "Pandas",
+      "Tailwind",
+      "CI/CD",
+      "Scalar"
     ],
     "link": "https://www.verizon.com"
   },

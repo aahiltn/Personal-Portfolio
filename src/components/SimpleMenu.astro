@@ -1,0 +1,44 @@
+---
+import "@fontsource/schoolbell";
+
+interface Props {
+  currentPage: "experiences" | "projects";
+}
+
+const { currentPage } = Astro.props;
+---
+
+<nav
+  class="bg-transparent text-[#412819] dark:text-gray-200 flex w-full justify-around -mb-3 place-items-center"
+>
+  <!-- Home Link (always on left) -->
+  <a
+    class="mt-8 text-2xl font-[Schoolbell] font-medium hover:text-amber-900 dark:hover:text-yellow-500 transition duration-300"
+    href="/"
+  >
+    Home
+  </a>
+
+  <!-- Conditional Right Link -->
+  {
+    currentPage === "experiences" && (
+      <a
+        class="mt-8 text-2xl font-[Schoolbell] font-medium hover:text-amber-900 dark:hover:text-yellow-500 transition duration-300"
+        href="/projects/"
+      >
+        Projects
+      </a>
+    )
+  }
+
+  {
+    currentPage === "projects" && (
+      <a
+        class="mt-8 text-2xl font-[Schoolbell] font-medium hover:text-amber-900 dark:hover:text-yellow-500 transition duration-300"
+        href="/experience/"
+      >
+        Experiences
+      </a>
+    )
+  }
+</nav>

@@ -1,5 +1,4 @@
 ---
-import type { ImageMetadata } from "astro";
 import FeaturedCard from "./base/FeaturedCard.astro";
 import { type Project } from "../types.ts";
 
@@ -71,10 +70,12 @@ const { projects, autoScrollSpeed = 4000, className = "" } = Astro.props;
             company={project.company}
             location={project.location}
             dates={project.dates}
-            image={"src/images/projects/" + project.image + ".svg"}
+            image={"/images/projects/" + project.image + ".svg"}
             stack={project.stack}
             link={project.link}
-            featuredPhoto={"src/images/projects/" + project.title + "/feat.png"}
+            featuredPhoto={
+              "/images/projects/" + project.title.toLowerCase() + "/feat.png"
+            }
           />
         </div>
       ))

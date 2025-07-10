@@ -1,78 +1,54 @@
 ---
 import Instax from "../components/instax.jsx";
 import Bio from "../components/bio.astro";
-import FormContact from "../components/contact.astro";
 import ThemeToggle from "../components/base/ThemeToggle.astro";
 import Menu from "../components/menu";
 import Carousel from "../components/Carousel.astro";
 
 import projects from "../data/projects.json";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<html class="scroll-smooth" lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      type="text/partytown"
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-QHB0PLT6J6"></script>
-    <script type="text/partytown">
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-QHB0PLT6J6");
-    </script>
+<Layout>
+  <div class="space-y-14 scroll-smooth pb-24 w-full">
+    <div class="relative w-full">
+      <ThemeToggle />
+    </div>
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <title>Aahil Nishad</title>
-
-    <meta
-      name="description"
-      content="Aahil Nishad's Computer Science Personal Portfolio. View Projects and Skills for a Northeastern Honors Khoury 2027 CS Student on a Search for Co-Op Internship and Career"
-    />
-    <meta property="og:title" content="Portfolio - Aahil Nishad" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.aahilnishad.me/" />
-    <meta
-      property="og:description"
-      content="Explore my projects, experiences, and contact me!"
-    />
-    <meta property="og:site_name" content="Aahil Nishad's Portfolio" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Portfolio: Aahil Nishad" />
-    <meta
-      name="twitter:description"
-      content="Welcome to Aahil Nishad's portfolio. Explore my projects, experiences, and contact me for collaboration."
-    />
-  </head>
-
-  <body class="bg-[#D4A13D] dark:bg-gray-900">
-    <div class="space-y-14 scroll-smooth pb-24 w-full">
-      <div class="relative w-full">
-        <ThemeToggle />
+    <!-- Responsive Layout -->
+    <div
+      class="flex flex-col md:flex-row gap-6 px-4 md:px-0 md:m-20 md:mt-20 md:justify-around"
+    >
+      <!-- Menu - shows on top for mobile, on right for desktop -->
+      <div class="md:hidden">
+        <Menu client:load />
       </div>
-      <div class="m-20 mt-20 gap-6 justify-around flex flex-row">
+
+      <!-- Instax - centered on mobile, left on desktop -->
+      <div class="flex justify-center md:justify-start">
         <Instax client:load />
-        <div class="flex flex-col gap-3">
+      </div>
+
+      <!-- Content Column -->
+      <div class="flex flex-col gap-3">
+        <!-- Menu - hidden on mobile, shows here on desktop -->
+        <div class="hidden md:block">
           <Menu client:load />
+        </div>
+
+        <!-- Bio and Projects Container -->
+        <div class="flex flex-col gap-4 md:gap-3 md:p-3">
+          <!-- Bio -->
           <div
-            class=`text-left  text-black w-full h-fit space-y-4 p-3 rounded-lg`
+            class="bg-[#e6be70] text-black dark:text-gray-200 w-full space-y-4 p-7 rounded-lg dark:bg-gray-800 shadow-md"
           >
-            <div
-              class=`text-left bg-[#e6be70] text-black dark:text-gray-200 w-full h-fit space-y-4 p-7 rounded-lg dark:bg-gray-800 shadow-md`
-              data-taos-offset="0"
-              id="bio"
-            >
-              <Bio />
-            </div>
-            <Carousel projects={projects.slice(0, 4)} />
+            <Bio />
           </div>
+
+          <!-- Projects -->
+          <Carousel projects={projects.slice(0, 4)} />
         </div>
       </div>
     </div>
-  </body>
-</html>
+  </div>
+</Layout>

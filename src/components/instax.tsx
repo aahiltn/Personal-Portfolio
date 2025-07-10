@@ -16,7 +16,6 @@ interface InstaxImage {
 
 const images: InstaxImage = {
   home: pfp,
-  bio: bio,
   experience: experiences,
   projects: projects,
   contact: contact,
@@ -31,60 +30,28 @@ interface PhotoCard {
   shouldStraighten?: boolean;
 }
 
-const Instax: React.FC = () => {
+interface InstaxProps {
+  simplified?: boolean;
+  initialSection?: string;
+}
+
+const Instax: React.FC<InstaxProps> = ({
+  simplified = false,
+  initialSection,
+}) => {
   const dir = useStore(direction);
+  const [currentSection, setCurrentSection] = useState(initialSection || dir);
   const [photoStack, setPhotoStack] = useState<PhotoCard[]>([
-    { id: 1, section: dir, rotation: 0, zIndex: 1, timestamp: Date.now() },
+    {
+      id: 1,
+      section: currentSection,
+      rotation: 0,
+      zIndex: 1,
+      timestamp: Date.now(),
+    },
   ]);
   const [nextId, setNextId] = useState(2);
   const [isMobile, setIsMobile] = useState(false);
-
-  // Auto-delete photos after 5 seconds (except the top one)
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPhotoStack((prev) => {
-        const now = Date.now();
-        const topPhoto = prev[prev.length - 1]; // Keep the top photo
-        const filteredStack = prev.filter(
-          (photo) => photo.id === topPhoto.id || now - photo.timestamp < 5000
-        );
-
-        if (filteredStack.length === 1 && filteredStack[0].id === topPhoto.id) {
-          filteredStack[0].shouldStraighten = true; // Mark the top photo to straighten
-        }
-        // Only update if something was removed
-        return filteredStack.length !== prev.length ? filteredStack : prev;
-      });
-    }, 1000); // Check every second
-
-    return () => clearInterval(interval);
-  }, []);
-
-  // Handle direction changes
-  useEffect(() => {
-    if (
-      photoStack.length > 0 &&
-      photoStack[photoStack.length - 1].section !== dir
-    ) {
-      // Remove the bottom photo when we have more than 2 photos
-      setPhotoStack((prev) => {
-        const newStack = prev.length > 2 ? prev.slice(1) : prev;
-
-        // Add new photo on top
-        const newPhoto: PhotoCard = {
-          id: nextId,
-          section: dir,
-          rotation: Math.random() * 30 - 15, // Random rotation between -15 and 15 degrees
-          zIndex: nextId,
-          timestamp: Date.now(),
-        };
-
-        return [...newStack, newPhoto];
-      });
-
-      setNextId((prev) => prev + 1);
-    }
-  }, [dir, nextId, photoStack]);
 
   // Check if mobile on component mount
   useEffect(() => {
@@ -94,12 +61,136 @@ const Instax: React.FC = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const handleSectionClick = (section: string) => {
-    if (isMobile) {
-      direction.set(section);
+  // Handle changes to dir store value
+  useEffect(() => {
+    setCurrentSection(dir);
+  }, [dir]);
+
+  // Update photo stack when section changes
+  useEffect(() => {
+    if (simplified) {
+      // For simplified version, just maintain a single photo
+      setPhotoStack([
+        {
+          id: 1,
+          section: currentSection,
+          rotation: 0,
+          zIndex: 1,
+          timestamp: Date.now(),
+        },
+      ]);
+      return;
     }
+
+    if (isMobile) {
+      // On mobile, just update the current photo
+      setPhotoStack([
+        {
+          id: 1,
+          section: currentSection,
+          rotation: 0,
+          zIndex: 1,
+          timestamp: Date.now(),
+        },
+      ]);
+      return;
+    }
+
+    // Only add new photo if the section changed and there's no matching photo at the top
+    if (
+      photoStack.length === 0 ||
+      photoStack[photoStack.length - 1].section !== currentSection
+    ) {
+      setPhotoStack((prev) => {
+        const newStack = prev.length > 2 ? prev.slice(1) : prev;
+
+        const newPhoto: PhotoCard = {
+          id: nextId,
+          section: currentSection,
+          rotation: Math.random() * 30 - 15,
+          zIndex: nextId,
+          timestamp: Date.now(),
+        };
+
+        return [...newStack, newPhoto];
+      });
+
+      setNextId((prev) => prev + 1);
+    }
+  }, [currentSection, isMobile, simplified, nextId]);
+
+  // Auto-delete photos after 5 seconds (except the top one) - DESKTOP ONLY
+  useEffect(() => {
+    if (isMobile || simplified) return; // Skip animations on mobile or simplified mode
+
+    const interval = setInterval(() => {
+      setPhotoStack((prev) => {
+        if (prev.length <= 1) return prev;
+
+        const now = Date.now();
+        const topPhoto = prev[prev.length - 1];
+        const filteredStack = prev.filter(
+          (photo) => photo.id === topPhoto.id || now - photo.timestamp < 5000
+        );
+
+        if (filteredStack.length === 1 && filteredStack[0].id === topPhoto.id) {
+          filteredStack[0].shouldStraighten = true;
+        }
+        return filteredStack.length !== prev.length ? filteredStack : prev;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [isMobile, simplified]);
+
+  const handleSectionClick = (section: string) => {
+    direction.set(section);
   };
 
+  // Simplified or Mobile version
+  if (simplified || isMobile) {
+    return (
+      <div className="flex flex-col items-center">
+        <div className="w-72 max-w-[90vw]">
+          <div className="bg-white flex-col w-full h-auto py-3 px-5 text-black rounded-md shadow-lg border-r-4 border-[#98701f]">
+            <div className="relative overflow-hidden py-4">
+              <img
+                src={images[currentSection]?.src || images.home.src}
+                alt="aahil"
+                className="w-full"
+              />
+            </div>
+
+            <div className="bg-white my-4 font-['Schoolbell'] flex flex-col justify-center text-center">
+              <span className="text-4xl font-extrabold">Aahil Nishad</span>
+              <span className="text-lg font-semibold">
+                Northeastern '27, Honors CS
+              </span>
+            </div>
+          </div>
+        </div>
+
+        {/* Section tabs */}
+        <div className="flex justify-center space-x-2 mt-4 flex-wrap gap-2">
+          {Object.keys(images).map((section: string) => (
+            <button
+              key={section}
+              className={`px-3 py-1 rounded-md text-sm transition-colors ${
+                currentSection === section
+                  ? "bg-[#98701f] text-white"
+                  : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
+              }`}
+              onClick={() => handleSectionClick(section)}
+            >
+              {section.charAt(0).toUpperCase() + section.slice(1)}
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // Desktop version - with all animations
   return (
     <div className="flex flex-col">
       <div className="relative w-[18rem] h-auto">
@@ -115,16 +206,16 @@ const Instax: React.FC = () => {
                 photo.id === 1
                   ? false
                   : {
-                      x: -400 + Math.random() * 200 - 100, // Random x between -500 and -300
-                      y: -200 + Math.random() * 100 - 50, // Random y between -250 and -150
-                      rotate: -45 + Math.random() * 30 - 15, // Random initial rotation between -60 and -30
-                      scale: 0.7 + Math.random() * 0.2, // Random scale between 0.7 and 0.9
+                      x: -400 + Math.random() * 200 - 100,
+                      y: -200 + Math.random() * 100 - 50,
+                      rotate: -45 + Math.random() * 30 - 15,
+                      scale: 0.7 + Math.random() * 0.2,
                       opacity: 0,
                     }
               }
               animate={{
-                x: Math.random() * 20 - 10, // Random final x offset between -10 and 10
-                y: Math.random() * 20 - 10, // Random final y offset between -10 and 10
+                x: Math.random() * 20 - 10,
+                y: Math.random() * 20 - 10,
                 rotate: photo.rotation,
                 scale: 1,
                 opacity: 1,
@@ -135,18 +226,17 @@ const Instax: React.FC = () => {
               }}
               transition={{
                 type: "spring",
-                stiffness: 60 + Math.random() * 40, // Random stiffness between 60-100
-                damping: 15 + Math.random() * 15, // Random damping between 15-30
-                mass: 0.8 + Math.random() * 0.6, // Random mass between 0.8-1.4
-                duration: 0.6 + Math.random() * 0.4, // Random duration between 0.6-1.0s
+                stiffness: 60 + Math.random() * 40,
+                damping: 15 + Math.random() * 15,
+                mass: 0.8 + Math.random() * 0.6,
+                duration: 0.6 + Math.random() * 0.4,
               }}
               whileHover={{
-                scale: 1.01 + Math.random() * 0.03, // Random hover scale between 1.01-1.04
-                rotate: photo.rotation + (Math.random() * 4 - 2), // Random additional rotation ±2
+                scale: 1.01 + Math.random() * 0.03,
+                rotate: photo.rotation + (Math.random() * 4 - 2),
                 transition: { duration: 0.2 },
               }}
             >
-              {/* Image with animation */}
               <div className="relative overflow-hidden py-4">
                 <motion.img
                   src={images[photo.section].src}
@@ -180,33 +270,6 @@ const Instax: React.FC = () => {
           ))}
         </AnimatePresence>
       </div>
-
-      {/* Mobile section tabs */}
-      {isMobile && (
-        <motion.div
-          className="flex justify-center space-x-2 mt-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.3 }}
-        >
-          {Object.keys(images).map((section, index) => (
-            <motion.button
-              key={section}
-              className={`px-3 py-1 rounded-md text-sm ${
-                dir === section ? "bg-[#98701f] text-white" : "bg-gray-200"
-              }`}
-              onClick={() => handleSectionClick(section)}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 + index * 0.1, duration: 0.3 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {section.charAt(0).toUpperCase() + section.slice(1)}
-            </motion.button>
-          ))}
-        </motion.div>
-      )}
     </div>
   );
 };

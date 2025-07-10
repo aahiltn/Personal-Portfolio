@@ -2,9 +2,15 @@
 import Card from "../../components/base/card.astro";
 import type { Project } from "../../types";
 import projects from "../../data/projects.json";
+import Layout from "../../layouts/Layout.astro";
+import SimpleMenu from "../../components/SimpleMenu.astro";
 ---
 
-<body class="bg-[#D4A13D] p-4 dark:bg-gray-900">
+<Layout
+  title="Experiences - Aahil Nishad"
+  description="My professional experiences and career journey"
+>
+  <SimpleMenu currentPage="projects" />
   <div class="font-[Schoolbell] font-extrabold p-4 text-4xl text-center">
     Projects
   </div>
@@ -16,7 +22,7 @@ import projects from "../../data/projects.json";
           title={project.title}
           description={project.description}
           dates={project.dates}
-          image={`/src/images/projects/${project.image}.svg`}
+          image={`/images/projects/${project.image}.svg`}
           company={project.company}
           location={project.location}
           stack={project.stack}
@@ -25,4 +31,4 @@ import projects from "../../data/projects.json";
       ))
     }
   </div>
-</body>
+</Layout>

@@ -50,13 +50,16 @@
       "TypeScript",
       "Express",
       "TripAdvisor API",
-      "Azure Container Apps"
+      "Azure Container Apps",
+      "Figma",
+      "Tailwind",
+      "shadcn/ui"
     ],
     "link": "/experiences/cairn"
   },
   {
     "title": "Platnm",
-    "description": "The one-stop shop for all musical discourse—bringing music reviews back to the masses.",
+    "description": "The one-stop shop for all musical discourse, bringing music reviews back to the masses.",
     "dates": "Sep. 2024 - Dec. 2024",
     "image": "platnm",
     "company": "Generate Product Development",

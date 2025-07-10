@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useStore } from "@nanostores/react";
 import { direction } from "../store.js";
 import "@fontsource/schoolbell";
 
@@ -8,7 +7,6 @@ const Menu: React.FC = () => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [isTimerActive, setIsTimerActive] = useState(false);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-  const dir = useStore(direction);
   const [hint, setHint] = useState(false);
 
   function setDirection(dir: string) {

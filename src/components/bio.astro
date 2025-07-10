@@ -43,17 +43,13 @@ import FormContact from "./contact.astro";
     const contactButton = document.getElementById("contact-button");
     const bioContent = document.getElementById("bio-content");
     const contactForm = document.getElementById("contact-form");
-
     contactButton?.addEventListener("click", () => {
-      // Toggle between bio and contact form
-      if (bioContent?.classList.contains("hidden")) {
-        // Show bio, hide contact form
-        bioContent?.classList.remove("hidden");
-        contactForm?.classList.add("hidden");
-      } else {
-        // Show contact form, hide bio
+      if (contactForm?.classList.contains("hidden")) {
         bioContent?.classList.add("hidden");
         contactForm?.classList.remove("hidden");
+      } else {
+        bioContent?.classList.remove("hidden");
+        contactForm?.classList.add("hidden");
       }
     });
   });

@@ -149,7 +149,10 @@ const Instax: React.FC<InstaxProps> = ({
     direction.set(section);
   };
 
-  const handleSwipe = (info) => {
+  const handleSwipe = (info: {
+    offset: { x: number };
+    velocity: { x: number };
+  }) => {
     const swipeThreshold = 50;
     const velocityThreshold = 300;
 

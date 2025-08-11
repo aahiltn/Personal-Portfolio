@@ -3,7 +3,7 @@ import "@splidejs/splide/css";
 import { Splide, SplideSlide } from "astro-splide";
 import FeaturedCard from "./base/FeaturedCard.astro";
 import { type Project } from "../types.ts";
-import type { Options, ResponsiveOptions } from "@splidejs/splide";
+import type { Options } from "@splidejs/splide";
 
 interface Props {
   projects: Project[];
@@ -35,7 +35,7 @@ const options: Options = {
       perPage: 1, // Show one slide
       fixedWidth: 0, // IMPORTANT: Reset fixedWidth to let perPage work
       arrows: false,
-      padding: "1.5rem", // Give mobile view some breathing room on the sides
+      padding: "1.5rem",
     },
   },
 };
@@ -47,7 +47,7 @@ const options: Options = {
   Featured Projects
 </h2>
 
-<div class="max-w-xs sm:max-w-xl md:max-w-xl lg:max-w-[52rem] mx-auto px-2">
+<div class="max-w-xs sm:max-w-xl md:max-w-xl lg:max-w-[50rem] mx-auto px-2">
   <Splide class={`not-content h-auto px-1.5 ${className}`} options={options}>
     {
       projects.map((project) => (
@@ -87,14 +87,10 @@ const options: Options = {
   }
 
   :global(.splide__pagination__page) {
-    @apply w-2 h-2 bg-gray-300 hover:bg-gray-400 rounded-full mx-1 border-0 transition-colors duration-200 opacity-100;
+    @apply w-2 h-2 dark:bg-gray-600 hover:bg-gray-400 rounded-full mx-1 border-0 transition-colors duration-200 opacity-100;
   }
 
   :global(.splide__pagination__page.is-active) {
-    @apply bg-yellow-600 scale-110;
-  }
-
-  :global(.dark .splide__pagination__page.is-active) {
-    @apply bg-gray-600;
+    @apply bg-yellow-600 scale-110 dark:bg-gray-300;
   }
 </style>

@@ -42,13 +42,13 @@ const options: Options = {
 ---
 
 <h2
-  class="font-[Schoolbell] text-2xl font-bold text-black dark:text-gray-200 sm:text-center md:text-left"
+  class="font-[Schoolbell] text-2xl font-bold text-black dark:text-gray-200 text-center md:text-left"
 >
   Featured Projects
 </h2>
 
-<div class="max-w-xs sm:max-w-xl md:max-w-xl lg:max-w-[52rem] mx-auto p-2">
-  <Splide class={`not-content h-auto p-3 ${className}`} options={options}>
+<div class="max-w-xs sm:max-w-xl md:max-w-xl lg:max-w-[52rem] mx-auto px-2">
+  <Splide class={`not-content h-auto px-1.5 ${className}`} options={options}>
     {
       projects.map((project) => (
         <SplideSlide>

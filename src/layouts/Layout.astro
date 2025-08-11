@@ -1,7 +1,6 @@
 ---
 import "@fontsource/schoolbell";
 import "@fontsource-variable/cabin";
-import ThemeToggle from "../components/base/ThemeToggle.astro";
 
 export interface Props {
   title?: string;
@@ -10,7 +9,7 @@ export interface Props {
 
 const {
   title = "Aahil Nishad",
-  description = "Aahil Nishad's Computer Science Personal Portfolio. View Projects and Skills for a Northeastern Honors Khoury 2027 CS Student on a Search for Co-Op Internship and Career",
+  description = "Aahil Nishad's Computer Science Personal Portfolio. View Projects and Skills for a Northeastern Honors Khoury 2027 CS Student on a Search for Software Co-Op Internship and Career",
 } = Astro.props;
 ---
 
@@ -48,9 +47,6 @@ const {
   <body
     class="bg-[#D4A13D] dark:bg-gray-900 text-gray-900 dark:text-gray-200 font-[Cabin Variable] antialiased"
   >
-    <div class="relative w-full">
-      <ThemeToggle />
-    </div>
     <slot />
   </body>
 </html>

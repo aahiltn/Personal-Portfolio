@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useStore } from "@nanostores/react";
 import { direction } from "../store";
 import pfp from "../images/pfp.jpg";
-import bio from "../images/bio.jpeg";
 import contact from "../images/contact.jpeg";
 import experiences from "../images/experiences.jpeg";
 import projects from "../images/projects.jpg";
@@ -20,6 +19,8 @@ const images: InstaxImage = {
   projects: projects,
   contact: contact,
 };
+
+const sectionOrder = ["home", "experience", "projects", "contact"];
 
 interface PhotoCard {
   id: number;
@@ -52,6 +53,9 @@ const Instax: React.FC<InstaxProps> = ({
   ]);
   const [nextId, setNextId] = useState(2);
   const [isMobile, setIsMobile] = useState(false);
+  const [swipeDirection, setSwipeDirection] = useState<"left" | "right" | null>(
+    null
+  );
 
   // Check if mobile on component mount
   useEffect(() => {
@@ -83,7 +87,6 @@ const Instax: React.FC<InstaxProps> = ({
     }
 
     if (isMobile) {
-      // On mobile, just update the current photo
       setPhotoStack([
         {
           id: 1,
@@ -96,7 +99,6 @@ const Instax: React.FC<InstaxProps> = ({
       return;
     }
 
-    // Only add new photo if the section changed and there's no matching photo at the top
     if (
       photoStack.length === 0 ||
       photoStack[photoStack.length - 1].section !== currentSection
@@ -147,44 +149,92 @@ const Instax: React.FC<InstaxProps> = ({
     direction.set(section);
   };
 
-  // Simplified or Mobile version
+  const handleSwipe = (info) => {
+    const swipeThreshold = 50;
+    const velocityThreshold = 300;
+
+    const isSwipeLeft =
+      info.offset.x < -swipeThreshold || info.velocity.x < -velocityThreshold;
+    const isSwipeRight =
+      info.offset.x > swipeThreshold || info.velocity.x > velocityThreshold;
+
+    if (isSwipeLeft || isSwipeRight) {
+      const currentIndex = sectionOrder.indexOf(currentSection);
+      let newIndex;
+
+      if (isSwipeLeft) {
+        newIndex = (currentIndex + 1) % sectionOrder.length;
+        setSwipeDirection("left");
+      } else {
+        newIndex =
+          (currentIndex - 1 + sectionOrder.length) % sectionOrder.length;
+        setSwipeDirection("right");
+      }
+
+      const newSection = sectionOrder[newIndex];
+      direction.set(newSection);
+
+      // Reset swipe direction after animation
+      setTimeout(() => setSwipeDirection(null), 300);
+    }
+  };
+
   if (simplified || isMobile) {
     return (
       <div className="flex flex-col items-center">
-        <div className="w-72 max-w-[90vw]">
-          <div className="bg-white flex-col w-full h-auto py-3 px-5 text-black rounded-md shadow-lg border-r-4 border-[#98701f]">
-            <div className="relative overflow-hidden py-4">
-              <img
-                src={images[currentSection]?.src || images.home.src}
-                alt="aahil"
-                className="w-full"
-              />
-            </div>
-
-            <div className="bg-white my-4 font-['Schoolbell'] flex flex-col justify-center text-center">
-              <span className="text-4xl font-extrabold">Aahil Nishad</span>
-              <span className="text-lg font-semibold">
-                Northeastern '27, Honors CS
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Section tabs */}
-        <div className="flex justify-center space-x-2 mt-4 flex-wrap gap-2">
-          {Object.keys(images).map((section: string) => (
-            <button
-              key={section}
-              className={`px-3 py-1 rounded-md text-sm transition-colors ${
-                currentSection === section
-                  ? "bg-[#98701f] text-white"
-                  : "bg-gray-200 text-gray-800 dark:bg-gray-700 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600"
-              }`}
-              onClick={() => handleSectionClick(section)}
+        <motion.div
+          className="w-72 max-w-[90vw] cursor-grab active:cursor-grabbing"
+          drag="x"
+          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0.2}
+          onDragEnd={(_, info) => handleSwipe(info)}
+          whileDrag={{ scale: 0.95 }}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentSection}
+              className="bg-white flex-col w-full h-auto py-3 px-5 text-black rounded-md shadow-lg border-r-4 border-[#98701f]"
+              initial={{
+                x:
+                  swipeDirection === "left"
+                    ? 300
+                    : swipeDirection === "right"
+                    ? -300
+                    : 0,
+                opacity: 0,
+              }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{
+                x:
+                  swipeDirection === "left"
+                    ? -300
+                    : swipeDirection === "right"
+                    ? 300
+                    : 0,
+                opacity: 0,
+              }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
             >
-              {section.charAt(0).toUpperCase() + section.slice(1)}
-            </button>
-          ))}
+              <div className="relative overflow-hidden py-4">
+                <img
+                  src={images[currentSection]?.src || images.home.src}
+                  alt="aahil"
+                  className="w-full"
+                />
+              </div>
+
+              <div className="bg-white my-4 font-['Schoolbell'] flex flex-col justify-center text-center">
+                <span className="text-4xl font-extrabold">Aahil Nishad</span>
+                <span className="text-lg font-semibold">
+                  Northeastern '27, Honors CS
+                </span>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </motion.div>
+
+        <div className="text-center mt-2 text-sm text-gray-500 dark:text-gray-400">
+          ← Swipe →
         </div>
       </div>
     );
@@ -198,16 +248,17 @@ const Instax: React.FC<InstaxProps> = ({
           {photoStack.map((photo) => (
             <motion.div
               key={photo.id}
-              className="absolute bg-white flex-none flex-col w-full h-auto py-3 px-5 text-black rounded-md shadow-xs border-r-4 dark:border-gray-600 border-[#98701f] hover:outline-md"
+              className="absolute bg-white flex-none flex-col w-full h-auto py-3 px-5 text-black rounded-md shadow-xs border-r-4 border-b-2 dark:border-gray-600 border-orange-700 hover:outline-md"
               style={{
                 zIndex: photo.zIndex,
+                top: "25px", // Added top offset to move down
               }}
               initial={
                 photo.id === 1
                   ? false
                   : {
                       x: -400 + Math.random() * 200 - 100,
-                      y: -200 + Math.random() * 100 - 50,
+                      y: -100 + Math.random() * 100 - 25,
                       rotate: -45 + Math.random() * 30 - 15,
                       scale: 0.7 + Math.random() * 0.2,
                       opacity: 0,
@@ -215,7 +266,7 @@ const Instax: React.FC<InstaxProps> = ({
               }
               animate={{
                 x: Math.random() * 20 - 10,
-                y: Math.random() * 20 - 10,
+                y: 30 + Math.random() * 20 - 10, // Increased y value to move down
                 rotate: photo.rotation,
                 scale: 1,
                 opacity: 1,

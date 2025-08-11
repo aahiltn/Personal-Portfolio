@@ -1,269 +1,100 @@
 ---
+import "@splidejs/splide/css";
+import { Splide, SplideSlide } from "astro-splide";
 import FeaturedCard from "./base/FeaturedCard.astro";
 import { type Project } from "../types.ts";
+import type { Options, ResponsiveOptions } from "@splidejs/splide";
 
 interface Props {
   projects: Project[];
-  autoScrollSpeed?: number; // milliseconds between auto-scroll
+  autoScrollSpeed?: number;
   className?: string;
 }
 
-const { projects, autoScrollSpeed = 4000, className = "" } = Astro.props;
+const { projects, autoScrollSpeed = 3500, className = "" } = Astro.props;
+
+const options: Options = {
+  type: "loop",
+  perMove: 1,
+  autoplay: true,
+  interval: autoScrollSpeed,
+  pauseOnHover: true,
+  keyboard: true,
+
+  // --- DESKTOP SETTINGS (Default) ---
+  fixedWidth: "24rem",
+  gap: "1rem",
+  pagination: true,
+  arrows: true,
+  padding: "1rem",
+
+  // --- MOBILE BREAKPOINT ---
+  // For screens 768px or narrower
+  breakpoints: {
+    768: {
+      perPage: 1, // Show one slide
+      fixedWidth: 0, // IMPORTANT: Reset fixedWidth to let perPage work
+      arrows: false,
+      padding: "1.5rem", // Give mobile view some breathing room on the sides
+    },
+  },
+};
 ---
 
 <h2
-  class="font-[Schoolbell] text-2xl font-bold mb-4 text-black dark:text-gray-200"
+  class="font-[Schoolbell] text-2xl font-bold text-black dark:text-gray-200 sm:text-center md:text-left"
 >
   Featured Projects
 </h2>
-<div class={`film-strip-container relative overflow-hidden ${className}`}>
-  <!-- Navigation Buttons -->
-  <button
-    id="prevBtn"
-    class="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-200 backdrop-blur-sm"
-    aria-label="Previous project"
-  >
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-    >
-      <path d="M15 18l-6-6 6-6"></path>
-    </svg>
-  </button>
 
-  <button
-    id="nextBtn"
-    class="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all duration-200 backdrop-blur-sm"
-    aria-label="Next project"
-  >
-    <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"
-    >
-      <path d="M9 18l6-6-6-6"></path>
-    </svg>
-  </button>
-
-  <!-- Film Strip -->
-  <div
-    id="filmStrip"
-    class="film-strip flex transition-transform duration-500 ease-in-out"
-    style="transform: translateX(0%)"
-  >
+<div class="max-w-xs sm:max-w-xl md:max-w-xl lg:max-w-[52rem] mx-auto p-2">
+  <Splide class={`not-content h-auto p-3 ${className}`} options={options}>
     {
-      projects.map((project, index) => (
-        <div
-          class="film-frame flex-shrink-0 w-full md:w-1/2 lg:w-1/3 xl:w-1/4 px-4"
-          data-index={index}
-        >
-          <FeaturedCard
-            title={project.title}
-            description={project.description}
-            company={project.company}
-            location={project.location}
-            dates={project.dates}
-            image={"/images/projects/" + project.image + ".svg"}
-            stack={project.stack}
-            link={project.link}
-            featuredPhoto={
-              "/images/projects/" + project.title.toLowerCase() + "/feat.png"
-            }
-          />
-        </div>
+      projects.map((project) => (
+        <SplideSlide>
+          <div class="w-full max-w-xs mx-auto">
+            <FeaturedCard
+              title={project.title}
+              description={project.description}
+              company={project.company}
+              location={project.location}
+              dates={project.dates}
+              image={"/images/projects/" + project.image + ".svg"}
+              stack={project.stack}
+              link={project.link}
+              featuredPhoto={
+                "/images/projects/" + project.title.toLowerCase() + "/feat.png"
+              }
+            />
+          </div>
+        </SplideSlide>
       ))
     }
-  </div>
-
-  <!-- Progress Indicators -->
-  <div class="flex justify-center mt-6 space-x-2">
-    {
-      projects.map((_, index) => (
-        <button
-          class="indicator w-3 h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-colors duration-200"
-          data-index={index}
-          aria-label={`Go to project ${index + 1}`}
-        />
-      ))
-    }
-  </div>
+  </Splide>
 </div>
 
 <style>
-  .film-strip-container {
-    --card-width: 100%;
+  :global(.splide__arrow) {
+    @apply w-8 h-8 bg-black/50 hover:bg-black/70 rounded-full backdrop-blur-sm transition-all duration-200 border-0;
   }
 
-  @media (min-width: 768px) {
-    .film-strip-container {
-      --card-width: 50%;
-    }
+  :global(.splide__arrow svg) {
+    @apply w-4 h-4 fill-white;
   }
 
-  @media (min-width: 1024px) {
-    .film-strip-container {
-      --card-width: 33.333333%;
-    }
+  :global(.splide__pagination) {
+    @apply -bottom-6 p-0;
   }
 
-  @media (min-width: 1280px) {
-    .film-strip-container {
-      --card-width: 25%;
-    }
+  :global(.splide__pagination__page) {
+    @apply w-2 h-2 bg-gray-300 hover:bg-gray-400 rounded-full mx-1 border-0 transition-colors duration-200 opacity-100;
+  }
+
+  :global(.splide__pagination__page.is-active) {
+    @apply bg-yellow-600 scale-110;
+  }
+
+  :global(.dark .splide__pagination__page.is-active) {
+    @apply bg-gray-600;
   }
 </style>
-
-<script define:vars={{ autoScrollSpeed, projectsLength: projects.length }}>
-  class Carousel {
-    constructor() {
-      this.filmStrip = document.getElementById("filmStrip");
-      this.prevBtn = document.getElementById("prevBtn");
-      this.nextBtn = document.getElementById("nextBtn");
-      this.indicators = document.querySelectorAll(".indicator");
-      this.currentIndex = 0;
-      this.totalProjects = projectsLength;
-      this.autoScrollSpeed = autoScrollSpeed;
-      this.autoScrollInterval = null;
-      this.isTransitioning = false;
-
-      this.init();
-    }
-
-    init() {
-      this.updateIndicators();
-      this.startAutoScroll();
-      this.bindEvents();
-    }
-
-    bindEvents() {
-      this.prevBtn?.addEventListener("click", () => this.goToPrevious());
-      this.nextBtn?.addEventListener("click", () => this.goToNext());
-
-      this.indicators?.forEach((indicator, index) => {
-        indicator.addEventListener("click", () => this.goToIndex(index));
-      });
-
-      // Pause auto-scroll on hover
-      this.filmStrip?.addEventListener("mouseenter", () =>
-        this.pauseAutoScroll()
-      );
-      this.filmStrip?.addEventListener("mouseleave", () =>
-        this.startAutoScroll()
-      );
-
-      // Handle keyboard navigation
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "ArrowLeft") this.goToPrevious();
-        if (e.key === "ArrowRight") this.goToNext();
-      });
-    }
-
-    getCardsPerView() {
-      if (window.innerWidth >= 1280) return 4; // xl
-      if (window.innerWidth >= 1024) return 3; // lg
-      if (window.innerWidth >= 768) return 2; // md
-      return 1; // sm
-    }
-
-    getMaxIndex() {
-      const cardsPerView = this.getCardsPerView();
-      return Math.max(0, this.totalProjects - cardsPerView);
-    }
-
-    goToIndex(index) {
-      if (this.isTransitioning) return;
-
-      const maxIndex = this.getMaxIndex();
-      this.currentIndex = Math.max(0, Math.min(index, maxIndex));
-      this.updatePosition();
-      this.updateIndicators();
-      this.resetAutoScroll();
-    }
-
-    goToNext() {
-      const maxIndex = this.getMaxIndex();
-      if (this.currentIndex < maxIndex) {
-        this.goToIndex(this.currentIndex + 1);
-      } else {
-        // Loop back to beginning
-        this.goToIndex(0);
-      }
-    }
-
-    goToPrevious() {
-      if (this.currentIndex > 0) {
-        this.goToIndex(this.currentIndex - 1);
-      } else {
-        // Loop to end
-        this.goToIndex(this.getMaxIndex());
-      }
-    }
-
-    updatePosition() {
-      if (!this.filmStrip) return;
-
-      this.isTransitioning = true;
-      const cardsPerView = this.getCardsPerView();
-      const translateX = -(this.currentIndex * (100 / cardsPerView));
-
-      this.filmStrip.style.transform = `translateX(${translateX}%)`;
-
-      // Reset transition flag after animation
-      setTimeout(() => {
-        this.isTransitioning = false;
-      }, 500);
-    }
-
-    updateIndicators() {
-      this.indicators?.forEach((indicator, index) => {
-        if (index === this.currentIndex) {
-          indicator.classList.remove("bg-gray-300");
-          indicator.classList.add("bg-blue-500");
-        } else {
-          indicator.classList.remove("bg-blue-500");
-          indicator.classList.add("bg-gray-300");
-        }
-      });
-    }
-
-    startAutoScroll() {
-      this.pauseAutoScroll();
-      this.autoScrollInterval = setInterval(() => {
-        this.goToNext();
-      }, this.autoScrollSpeed);
-    }
-
-    pauseAutoScroll() {
-      if (this.autoScrollInterval) {
-        clearInterval(this.autoScrollInterval);
-        this.autoScrollInterval = null;
-      }
-    }
-
-    resetAutoScroll() {
-      this.startAutoScroll();
-    }
-  }
-
-  // Initialize when DOM is loaded
-  document.addEventListener("DOMContentLoaded", () => {
-    new Carousel();
-  });
-
-  // Handle window resize
-  window.addEventListener("resize", () => {
-    const filmStrip = document.getElementById("filmStrip");
-    if (filmStrip) {
-      // Recalculate position on resize
-      const currentCarouselInstance = new Carousel();
-      currentCarouselInstance.updatePosition();
-    }
-  });
-</script>

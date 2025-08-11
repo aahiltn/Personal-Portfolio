@@ -1,5 +1,6 @@
 ---
 import "@fontsource/schoolbell";
+import "@fontsource-variable/cabin";
 import ThemeToggle from "../components/base/ThemeToggle.astro";
 
 export interface Props {
@@ -44,7 +45,9 @@ const {
     <meta name="twitter:title" content={`Portfolio: ${title}`} />
     <meta name="twitter:description" content={description} />
   </head>
-  <body class="bg-[#D4A13D] dark:bg-gray-900 text-gray-900 dark:text-gray-200">
+  <body
+    class="bg-[#D4A13D] dark:bg-gray-900 text-gray-900 dark:text-gray-200 font-[Cabin Variable] antialiased"
+  >
     <div class="relative w-full">
       <ThemeToggle />
     </div>

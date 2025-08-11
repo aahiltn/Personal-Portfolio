@@ -11,7 +11,7 @@ import { human } from "../store";
     </span>
     <div>
       <button
-        class="duration-200 w-auto rounded-lg dark:bg-gray-600 dark:text-gray-200 text-yellow-950 font-bold hover:shadow-xl hover:outline-1 dark:hover:bg-gray-700 hover:bg-yellow-600 bg-[#D4A13D] justify-center py-1 align-middle px-3 text-sm"
+        class="duration-200 w-auto rounded-lg dark:bg-gray-600 dark:text-gray-200 text-yellow-950 font-bold hover:shadow-xl hover:outline-1 dark:hover:bg-gray-700 hover:bg-[#f3d79e] border border-dashed border-[#D4A13D] dark:border-gray-800 justify-center py-1 align-middle px-3 text-sm"
         type="submit"
         hidden={human.value}
       >
@@ -33,7 +33,7 @@ import { human } from "../store";
         >First Name <span class="text-rose-800 dark:text-rose-400">*</span>
       </label>
       <input
-        class="dark:focus:ring-yellow-500 text-zinc-800 dark:bg-gray-400 bg-amber-50 p-2 rounded-lg"
+        class="dark:focus:ring-yellow-500 text-zinc-800 dark:bg-gray-400 border-1 border-amber-50 p-2 rounded-lg"
         type="text"
         name="first"
         placeholder="First Name"
@@ -48,7 +48,7 @@ import { human } from "../store";
         >Last Name <span class="text-rose-800 dark:text-rose-400">*</span>
       </label>
       <input
-        class="focus:dark:ring-yellow-500 text-zinc-800 dark:bg-gray-400 bg-amber-50 p-2 rounded-lg"
+        class="focus:dark:ring-yellow-500 text-zinc-800 dark:bg-gray-400 border-1 border-amber-50 p-2 rounded-lg"
         type="text"
         name="last"
         placeholder="Last Name"
@@ -62,7 +62,7 @@ import { human } from "../store";
         >Email Address <span class="text-rose-800 dark:text-rose-400">*</span>
       </label>
       <input
-        class="focus:dark:ring-yellow-500 text-zinc-800 dark:bg-gray-400 bg-amber-50 p-2 rounded-lg"
+        class="focus:dark:ring-yellow-500 text-zinc-800 dark:bg-gray-400 border-1 border-amber-50 p-2 rounded-lg"
         type="email"
         name="email"
         inputmode="email"
@@ -76,7 +76,7 @@ import { human } from "../store";
     >
       <label class="text-zinc-800 dark:text-zinc-200">Organization</label>
       <input
-        class="focus:dark:ring-yellow-500 text-zinc-800 dark:bg-gray-400 bg-amber-50 p-2 rounded-lg"
+        class="focus:dark:ring-yellow-500 text-zinc-800 dark:bg-gray-400 border-1 border-amber-50 p-2 rounded-lg"
         type="text"
         name="organization"
         placeholder="Org Name"
@@ -91,7 +91,7 @@ import { human } from "../store";
         >Message <span class="text-rose-800 dark:text-rose-400">*</span>
       </label>
       <textarea
-        class="focus:dark:ring-yellow-500 text-zinc-800 dark:bg-gray-400 bg-amber-50 w-full p-2 rounded-lg"
+        class="focus:dark:ring-yellow-500 text-zinc-800 dark:bg-gray-400 border-1 border-amber-50 w-full p-2 rounded-lg"
         name="message"
         rows="3"
         placeholder="Message"

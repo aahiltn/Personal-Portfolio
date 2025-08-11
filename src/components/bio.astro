@@ -5,17 +5,18 @@ import FormContact from "./contact.astro";
 ---
 
 <div id="bio-content">
-  <div class="justify-end">
+  <div class="justify-end mb-1">
     <span
       class="font-[Schoolbell] text-left font-bold text-3xl
       dark:text-gray-200 text-[#402d25]"
-      >Hey, I'm Aahil.
+    >
+      Hey, I'm Aahil.
     </span>
     <Out />
   </div>
 
   <span
-    class="text-left font-semibold text-sm dark:text-gray-200 text-[#402d25]"
+    class="text-left font-semibold text-sm dark:text-gray-200 text-[#402d25] mb-4"
   >
     Currently: Member of Technical Staff @ Healthtech Startup
   </span>
@@ -25,14 +26,14 @@ import FormContact from "./contact.astro";
     to learn and grow. When I'm not behind the keyboard, I'm a huge traveler and
     foodie.
   </div>
-
-  <button
-    id="contact-button"
-    class="hidden px-4 py-2 bg-[#402d25] text-white rounded-md hover:bg-[#5a4037] transition-colors"
-  >
-    Contact Me
-  </button>
 </div>
+
+<button
+  id="contact-button"
+  class="hidden px-4 py-2 bg-[#402d25] text-white rounded-md hover:bg-[#5a4037] transition-colors"
+>
+  Contact Me
+</button>
 
 <div id="contact-form" class="hidden">
   <FormContact />

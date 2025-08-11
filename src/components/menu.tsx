@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, m } from "framer-motion";
 import { direction } from "../store.js";
 import "@fontsource/schoolbell";
 
@@ -13,6 +13,16 @@ const Menu: React.FC = () => {
     direction.set(dir);
     setHint(true);
   }
+
+  const mobileDevice = () => {
+    return typeof window !== "undefined" && window.innerWidth <= 768;
+  };
+
+  useEffect(() => {
+    if (mobileDevice()) {
+      setHint(false);
+    }
+  });
 
   const handleMouseEnter = (item: string) => {
     if (timerRef.current) {
@@ -87,6 +97,8 @@ const Menu: React.FC = () => {
     </motion.div>
   );
 
+  const [contactText, setContactText] = useState("Contact");
+
   return (
     <nav className="bg-transparent text-[#412819] dark:text-gray-200 flex flex-wrap w-full justify-around place-items-center">
       <a
@@ -121,10 +133,16 @@ const Menu: React.FC = () => {
           const contactButton = document.getElementById("contact-button");
           if (contactButton) {
             contactButton.click();
+            // Toggle between "Bio" and "Contact"
+            if (contactText === "Contact") {
+              setContactText("About");
+            } else if (contactText === "About") {
+              setContactText("Contact");
+            }
           }
         }}
       >
-        Contact
+        {contactText}
         <AnimatePresence>
           {hoveredItem === "contact" && isTimerActive && <CircularTimer />}
         </AnimatePresence>

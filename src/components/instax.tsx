@@ -145,10 +145,6 @@ const Instax: React.FC<InstaxProps> = ({
     return () => clearInterval(interval);
   }, [isMobile, simplified]);
 
-  const handleSectionClick = (section: string) => {
-    direction.set(section);
-  };
-
   const handleSwipe = (info: {
     offset: { x: number };
     velocity: { x: number };

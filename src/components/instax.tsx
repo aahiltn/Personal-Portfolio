@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useStore } from "@nanostores/react";
 import { direction } from "../store";
 import pfp from "../images/pfp.jpg";
-import contact from "../images/contact.jpeg";
-import experiences from "../images/experiences.jpeg";
+import contact from "../images/contact.jpg";
+import experiences from "../images/experiences.jpg";
 import projects from "../images/projects.jpg";
 
 import "@fontsource/schoolbell";

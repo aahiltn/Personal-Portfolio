@@ -1,10 +1,9 @@
 import { defineConfig } from "astro/config";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel/static";
 import partytown from "@astrojs/partytown";
 import icon from "astro-icon";
-import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
@@ -17,10 +16,10 @@ export default defineConfig({
       include: ["**/react/*"],
     }),
     icon(),
-    sitemap(),
     mdx(),
     partytown(),
   ],
-  output: "server",
+  output: "static",
   adapter: vercel(),
+  site: "https://aahilnishad.me",
 });

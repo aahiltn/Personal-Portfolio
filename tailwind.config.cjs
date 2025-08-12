@@ -1,7 +1,4 @@
-const {
-  addIconSelectors,
-  addDynamicIconSelectors,
-} = require("@iconify/tailwind");
+const { addDynamicIconSelectors } = require("@iconify/tailwind");
 
 module.exports = {
   darkMode: "media",

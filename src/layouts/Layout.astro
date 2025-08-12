@@ -1,6 +1,7 @@
 ---
 import "@fontsource/schoolbell";
 import "@fontsource-variable/cabin";
+import { ViewTransitions } from "astro:transitions";
 
 export interface Props {
   title?: string;
@@ -43,6 +44,8 @@ const {
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={`Portfolio: ${title}`} />
     <meta name="twitter:description" content={description} />
+
+    <ViewTransitions />
   </head>
   <body
     class="bg-[#D4A13D] dark:bg-gray-900 text-gray-900 dark:text-gray-200 font-[Cabin Variable] antialiased"

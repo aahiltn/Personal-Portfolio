@@ -1,5 +1,28 @@
 [
   {
+    "title": "The Special Standard",
+    "description": "A digital curriculum platform created for speech-language pathologists to make therapy more organized, accessible, and engaging.",
+    "dates": "Sep. 2025 - Dec. 2025",
+    "image": "tssIcon",
+    "company": "Generate Product Development",
+    "location": "Boston, MA",
+    "stack": [
+      "Next.js",
+      "GoFiber",
+      "TypeScript",
+      "Go",
+      "PostgreSQL + Supabase",
+      "Tailwind",
+      "OpenAPI",
+      "Orval",
+      "Unit Testing",
+      "Integration Testing",
+      "Database Testing"
+    ],
+    "link": "https://github.com/GenerateNU/specialstandard"
+  },
+
+  {
     "title": "Dearly",
     "description": "An accessibility-first private family-sharing app. Share photos, videos, and memories with your family in a secure, private space.",
     "dates": "Jan. 2025 - Apr. 2025",

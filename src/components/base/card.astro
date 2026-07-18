@@ -10,10 +10,12 @@ const image = Astro.props.image;
 const stack = Astro.props.stack;
 const link = Astro.props.link;
 const company = Astro.props.company;
+const prevRoles = Astro.props.prevRoles;
 ---
 
-<div class="m-5 align-middle justify-center text-left">
+<div class="m-5 align-middle justify-center text-left scroll-mt-24">
   <a
+    id={title.toLowerCase().replace(/\s+/g, "-")}
     class="hover:scale-105 w-auto max-w-xl shadow-md bg-amber-50 dark:text-gray-900 dark:bg-gray-400 hover:shadow-black hover:ring-4 hover:ring-[#8d5c47] dark:hover:ring-yellow-500 rounded-md p-6 grid gap-6
 delay-[200ms] duration-[400ms] taos:scale-[0.6] taos:opacity-0"
     data-taos-offset="50"
@@ -37,6 +39,13 @@ delay-[200ms] duration-[400ms] taos:scale-[0.6] taos:opacity-0"
           <h3 class="text-xl font-semibold">{title}</h3>
           <span class="text-sm text-muted-foreground">{dates}</span>
         </span>
+        {
+          prevRoles && prevRoles.length > 0 && (
+            <span class="text-xs text-muted-foreground italic">
+              Previously: {prevRoles.join(", ")}
+            </span>
+          )
+        }
 
         <div class="flex items-center gap-1 text-sm text-muted-foreground">
           <span>{company}</span>

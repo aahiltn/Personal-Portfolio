@@ -7,6 +7,7 @@ interface Project {
   image: string;
   link: string;
   stack: string[];
+  prevRoles?: string[];
 }
 
 interface FeaturedProject extends Project {

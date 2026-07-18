@@ -18,7 +18,7 @@ import FormContact from "./contact.astro";
   <span
     class="text-left font-semibold text-sm dark:text-gray-200 text-[#402d25] mb-4"
   >
-    Software Engineer Co-op @ Klaviyo | TL @ Generate | Pursuing Summer 2026 Opportunities
+    Software Engineer Co-op @ Klaviyo | Infra @ Generate | Pursuing New Grad 2027
   </span>
   <div class="mb-4">
     When developing, my inspiration is the world around me. I love to build
@@ -40,7 +40,7 @@ import FormContact from "./contact.astro";
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("astro:page-load", () => {
     const contactButton = document.getElementById("contact-button");
     const bioContent = document.getElementById("bio-content");
     const contactForm = document.getElementById("contact-form");

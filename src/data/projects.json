@@ -1,5 +1,32 @@
 [
   {
+    "title": "Toggo",
+    "description": "A real-time group trip-planning app with live polls, maps, and itinerary collaboration for travelers. Get trips out of the group chat.",
+    "dates": "Jan. 2026 - Apr. 2026",
+    "image": "toggo",
+    "company": "Generate Product Development",
+    "location": "Boston, MA",
+    "stack": [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Go",
+      "Fiber",
+      "WebSockets",
+      "Redis",
+      "PostgreSQL",
+      "Bun ORM",
+      "Goose",
+      "JWT",
+      "Supabase",
+      "AWS S3",
+      "TanStack Query",
+      "Restyle",
+      "MapLibre"
+    ],
+    "link": "https://github.com/GenerateNU/toggo"
+  },
+  {
     "title": "The Special Standard",
     "description": "A digital curriculum platform created for speech-language pathologists to make therapy more organized, accessible, and engaging.",
     "dates": "Sep. 2025 - Dec. 2025",

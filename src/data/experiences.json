@@ -1,11 +1,53 @@
 [
   {
-    "title": "Member of Technical Staff",
-    "description": "Architecting and developing an AI-enhanced platform for managing therapy services for children with special needs.",
+    "title": "Software Engineer Co-op",
+    "description": "Building and maintaining Klaviyo's suite of mobile SDKs on the Mobile App Growth team, enabling push notifications, in-app messaging, geofencing, and event tracking across native and wrapper platforms.",
+    "company": "Klaviyo",
+    "dates": "Jan. 2026 - Present",
+    "location": "Boston, MA",
+    "image": "/images/klaviyo.png",
+    "stack": [
+      "Python",
+      "Go",
+      "Swift",
+      "Kotlin",
+      "TypeScript",
+      "React Native",
+      "Expo",
+      "Flutter",
+      "Dart",
+      "MySQL",
+      "CI/CD"
+    ],
+    "link": "https://www.klaviyo.com/products/mobile-app-marketing/"
+  },
+  {
+    "title": "Infrastructure Engineer",
+    "prevRoles": ["Technical Lead", "Software Engineer"],
+    "description": "Collaborate with designers, developers, and clients to build a series of social-media applications (Toggo, The Special Standard, Dearly, Platnm) in 4-month cycles.",
+    "company": "Generate Product Development",
+    "location": "Boston, MA",
+    "dates": "Sep. 2024 - Present",
+    "image": "https://generatenu.com/static/media/footerlogo.d440f7033ee504348579ee089ed4ae88.svg",
+    "stack": [
+      "React Native",
+      "Go",
+      "TypeScript",
+      "Figma",
+      "Client Interaction",
+      "Mentorship",
+      "Leadership",
+      "Agile Methodologies"
+    ],
+    "link": "https://generatenu.com"
+  },
+  {
+    "title": "Software Engineer",
+    "description": "Architected an AI-enhanced platform with the founding team to manage therapy services for children with special needs.",
     "company": "Healthtech Startup",
-    "dates": "Jul. 2025 - Present",
+    "dates": "Jul. 2025 - Sep. 2025",
     "location": "Remote",
-    "image": "https://media.licdn.com/dms/image/v2/D560BAQHeVOIH8ijsew/company-logo_200_200/company-logo_200_200/0/1692431744222?e=2147483647&v=beta&t=z5xlYmQp5tdGyjT0DfupEgIHYyxHuR6l_PPW1pZmy60",
+    "image": "/images/experiences/beema_health.jpeg",
     "stack": [
       "Golang",
       "TypeScript",
@@ -23,11 +65,11 @@
   },
   {
     "title": "Software Engineer Co-op",
-    "description": "As part of the AI & Data Team and Tech Ambassador's office, contributed to the development of a cloud-based platform for real-time data analytics and visualization.",
-    "company": "Verizon Communications x NExT",
+    "description": "Built a cloud-based data analytics and visualization platform with the AI & Data Team and Tech Ambassador's office to address churn.",
+    "company": "Verizon x NExT Consulting",
     "location": "Boston, MA",
     "dates": "Jan. 2024 - Jul. 2025",
-    "image": "https://companieslogo.com/img/orig/VZ-13e34d8e.png?t=1720244494",
+    "image": "/images/experiences/verizon.png",
     "stack": [
       "AWS",
       "Python",
@@ -41,30 +83,11 @@
       "SQLAlchemy",
       "NLP Models",
       "Pandas",
-      "Tailwind",
       "CI/CD",
-      "Scalar"
+      "Business Research",
+      "Communication"
     ],
     "link": "https://www.verizon.com"
-  },
-  {
-    "title": "Software Engineer",
-    "description": "Collaborate with designers, developers, and clients to build a series of full stack applications (Platnm, Dearly, The Special Standard) in 4-month cycles.",
-    "company": "Generate Product Development",
-    "location": "Boston, MA",
-    "dates": "Sep. 2024 - Present",
-    "image": "https://generatenu.com/static/media/footerlogo.d440f7033ee504348579ee089ed4ae88.svg",
-    "stack": [
-      "React Native",
-      "Go",
-      "TypeScript",
-      "Expo",
-      "PostgreSQL",
-      "Fiber",
-      "Nix",
-      "Figma"
-    ],
-    "link": "https://generatenu.com"
   },
   {
     "title": "Software Developer",
@@ -79,7 +102,7 @@
   {
     "title": "Software Developer",
     "description": "Implemented control systems in C++ and developed autonomous routing in cooperation with other members for team 5150H in use for 20+ competitions and 18+ awards. Mentored other teams in CT & MA.",
-    "company": "Vex Team: 5150H",
+    "company": "Danbury Robotics",
     "location": "Danbury, CT",
     "dates": "Sep. 2021 - June 2023",
     "image": "https://user.uploads.dev/file/7710a788a81724057b21cfabb52d0896.png",
